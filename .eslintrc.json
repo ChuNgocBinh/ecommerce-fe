@@ -49,6 +49,15 @@
                 "code": 120,
                 "tabWidth": 4
             }
-        ]
+        ],
+        "linebreak-style": 0,
+        "import/no-unresolved": 0,
+        "import/extensions": 0,
+        "import/order": 0,
+        "camelcase": 0,
+        "no-underscore-dangle": 0,
+        "no-console": 0,
+        "react/prop-types": "off",
+        "react/button-has-type": 0
     }
 }
