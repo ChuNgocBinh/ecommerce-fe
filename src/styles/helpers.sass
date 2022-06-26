@@ -1,0 +1,339 @@
+// media queries
+=xxw 
+  @media only screen and (max-width: "1440px")
+    @content
+=w
+  @media only screen and (max-width: "1419px")
+    @content
+
+=x
+  @media only screen and (max-width: "1339px")
+    @content
+=xs
+  @media only screen and (max-width: "1281px")
+    @content
+=d
+  @media only screen and (max-width: "1179px")
+    @content
+
+=t
+  @media only screen and (max-width: "1024px")
+    @content
+=tx 
+  @media only screen and (max-width: "800px")
+    @content
+=m
+  @media only screen and (max-width: "767px")
+    @content
+
+=a
+  @media only screen and (max-width: "639px")
+    @content
+=ax
+  @media only screen and (max-width: "550px")
+    @content
+=s
+  @media only screen and (max-width: "480px")
+    @content
+=ss
+  @media only screen and (max-width: "375px")
+    @content
+// fonts
+@font-face
+  src: url("fonts/Korolev_Bold.otf") format("otf")
+  src: url("fonts/Korolev_Bold.woff") format("woff")
+  src: url("fonts/Korolev_Bold.woff2") format("woff2")
+  font-family: "Korolev"
+  font-weight: 600
+
+@font-face
+  src: url("fonts/Korolev_Medium.otf") format("otf")
+  src: url("fonts/Korolev_Medium.woff") format("woff")
+  src: url("fonts/Korolev_Medium.woff2") format("woff2")
+  font-family: "Korolev"
+  font-weight: 400
+
+=dm-sans
+  font-family: 'Roboto', sans-serif
+  font-weight: 600
+
+=poppins
+  font-family: 'Roboto', sans-serif
+  font-weight: 600
+
+.hidden-desktop
+  display: none !important
+  +m
+    display: block !important
+
+.hidden-mobile
+  display: block !important
+  +m
+    display: none !important
+
+// colors
+$white: #ffffff
+$blue: #3772FF
+$blue-light: #4BC9F0
+$purple: #9757D7
+$purple-dark: #07004e
+$purple-light: #543ec4
+$pink: #EF466F
+$green: #45B26B
+$asphalt: #E4D7CF
+$yellow: #FFD166
+$orange-light: #ff8400
+$orange-dark: #ee4e00
+
+$neutrals1: #141416
+$neutrals2: #23262F
+$neutrals3: #353945
+$neutrals4: #777E90
+$neutrals5: #B1B5C3
+$neutrals6: #E6E8EC
+$neutrals7: #F4F5F6
+$neutrals8: #FCFCFD
+
+$transitionTime: 0.2s
+$shineAnimationTime: .75s
+$flashAnimationTime: 2s
+$circleAnimationTime: .75s
+
+$widthSizeDesktopM: 1280px
+$widthSizeTabletM: 768px
+$widthSizeMobileL: 640px
+$widthSizeMobileM: 490px
+$checkbox-size: 20px
+$checkbox-border: #cecece
+$checkbox-selected: #EE4E00
+@-webkit-keyframes shine
+  100%
+    left: 125%
+
+@keyframes shine
+  100%
+    left: 125%
+
+@-webkit-keyframes circle
+  0%
+    opacity: 1
+
+  40%
+    opacity: 1
+
+  100%
+    width: 200%
+    height: 200%
+    opacity: 0
+
+@keyframes circle
+  0%
+    opacity: 1
+
+  40%
+    opacity: 1
+
+  100%
+    width: 200%
+    height: 200%
+    opacity: 0
+
+@-webkit-keyframes flash
+  0%
+    opacity: .4
+
+  100%
+    opacity: 1
+
+@keyframes flash
+  0%
+    opacity: .4
+
+  100%
+    opacity: 1
+
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+@mixin loadingAnimation()
+  img
+    animation: spin 2s linear infinite
+    width: 13px
+    height: 13px
+    margin-left: 15px
+
+@mixin zoomInAndBlurAnimation()
+  img
+    width: 100%
+    transition: ease-out all $transitionTime
+    filter: blur(2px)
+  &:hover
+    img
+      transform: scale(1.2)
+      transition: ease-in all $transitionTime
+      filter: none
+
+@mixin flashAnimation()
+  &:hover
+    img
+      opacity: 1
+      -webkit-animation: flash $flashAnimationTime
+      animation: flash $flashAnimationTime
+
+@mixin circleAnimation()
+  position: relative
+  overflow: hidden
+  &:before
+    position: absolute
+    top: 50%
+    left: 50%
+    z-index: 2
+    display: block
+    content: ''
+    width: 0
+    height: 0
+    background: rgba(255, 255, 255, .2)
+    border-radius: 100%
+    -webkit-transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%)
+    opacity: 0
+
+  &:hover
+    &:before
+      -webkit-animation: circle $circleAnimationTime
+      animation: circle $circleAnimationTime
+
+@mixin shineAnimation()
+  position: relative
+  overflow: hidden
+  &:before
+    position: absolute
+    top: 0
+    left: -75%
+    z-index: 2
+    display: block
+    content: ''
+    width: 50%
+    height: 100%
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%)
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%)
+    -webkit-transform: skewX(-25deg)
+    transform: skewX(-25deg)
+  &:hover
+    &:before
+      -webkit-animation: shine $shineAnimationTime
+      animation: shine $shineAnimationTime
+
+
+// typography
+=body-1
+  font-size: 24px
+  line-height: (32/24)
+  letter-spacing: -.01em
+
+=body-bold-1
+  font-size: 24px
+  line-height: (32/24)
+  font-weight: 600
+  letter-spacing: -.01em
+
+=body-2
+  font-size: 16px
+  line-height: (24/16)
+
+=body-bold-2
+  font-size: 16px
+  line-height: (24/16)
+  font-weight: 500
+
+=caption-1
+  font-size: 14px
+  line-height: (24/14)
+
+=caption-bold-1
+  font-size: 14px
+  line-height: (24/14)
+  font-weight: 500
+
+=caption-2
+  font-size: 12px
+  line-height: (20/12)
+
+=caption-bold-2
+  font-size: 12px
+  line-height: (20/12)
+  font-weight: 600
+
+=hairline-1
+  font-size: 16px
+  line-height: 1
+  font-weight: 700
+  text-transform: uppercase
+
+=hairline-2
+  font-size: 12px
+  line-height: 1
+  font-weight: 700
+  text-transform: uppercase
+
+=button-1
+  +dm-sans
+  font-size: 16px
+  font-weight: 700
+  line-height: 1
+
+=button-2
+  +dm-sans
+  font-size: 14px
+  line-height: (16/14)
+  font-weight: 600
+
+//triangle
+=arr($width, $height, $bg, $direction)
+  width: 0px
+  height: 0px
+  border-style: solid
+  @if $direction == t
+    border-width: 0 $width / 2 + px $height + px $width / 2 + px
+    border-color: transparent transparent $bg transparent
+  @if $direction == r
+    border-width: $height / 2 + px 0 $height / 2 + px $width + px
+    border-color: transparent transparent transparent $bg
+  @if $direction == b
+    border-width: $height + px $width / 2 + px 0 $width / 2 + px
+    border-color: $bg transparent transparent transparent
+  @if $direction == l
+    border-width: $height / 2 + px $width + px $height / 2 + px 0
+    border-color: transparent $bg transparent transparent
+  @if $direction == tl
+    border-width: $height + px $width + px 0 0
+    border-color: $bg transparent transparent transparent
+  @if $direction == tr
+    border-width: 0 $width + px $height + px 0
+    border-color: transparent $bg transparent transparent
+  @if $direction == br
+    border-width: 0 0 $height + px $width + px
+    border-color: transparent transparent $bg transparent
+  @if $direction == bl
+    border-width: $width + px 0 0 $height + px
+    border-color: transparent transparent transparent $bg
+// example
+// +arr(500,50, #000, l)
+// +arr(500,50, #000, bl)
+
+// placeholder
+=placeholder
+  &::placeholder
+    @content
+
+// media query width
+=r($width)
+  @media only screen and (max-width: $width+ "px")
+    @content
+
+=rmin($width)
+  @media only screen and (min-width: $width+ "px")
+    @content
