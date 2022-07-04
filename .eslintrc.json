@@ -41,13 +41,17 @@
             2,
             "single"
         ],
+        "indent": [
+            "error",
+            2
+        ],
         "no-tabs": 0,
         "no-unused-vars": 1,
         "max-len": [
             0,
             {
                 "code": 120,
-                "tabWidth": 4
+                "tabWidth": 2
             }
         ],
         "linebreak-style": 0,
@@ -58,6 +62,8 @@
         "no-underscore-dangle": 0,
         "no-console": 0,
         "react/prop-types": "off",
-        "react/button-has-type": 0
+        "react/button-has-type": 0,
+        "react/jsx-indent": 0,
+        "no-mixed-operators": 0
     }
 }

@@ -8,7 +8,7 @@ function Layout({ children }) {
       <div className="layout_header">
         <Header />
       </div>
-      <div>
+      <div className="layout_body">
         {children}
 
       </div>
