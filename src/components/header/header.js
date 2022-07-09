@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -95,4 +95,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);
