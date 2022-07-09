@@ -6,17 +6,26 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import './header.sass';
+import { FormattedMessage } from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { changeLocale } from 'redux/appSLice';
 
 export const langs = [
-  { id: 1, icon: '/image/flag-en.png', title: 'English' },
-  { id: 2, icon: '/image/flag-vi.jpg', title: 'Việt Nam' },
+  {
+    id: 1, value: 'en', icon: '/image/flag-en.png', title: 'English',
+  },
+  {
+    id: 2, value: 'vi', icon: '/image/flag-vi.jpg', title: 'Việt Nam',
+  },
 ];
 
 function Header() {
   const [langCurrent, setlangCurrent] = useState(1);
-
+  const dispatch = useDispatch();
   const handleClickLang = (id) => {
     setlangCurrent(id);
+    const curLang = langs.find((item) => item.id === id).value;
+    dispatch(changeLocale(curLang));
   };
 
   return (
@@ -26,7 +35,7 @@ function Header() {
         <div className="header_search">
           <input />
           <button>
-            search
+            <FormattedMessage id="header.search" />
           </button>
         </div>
         <div className="header_action">

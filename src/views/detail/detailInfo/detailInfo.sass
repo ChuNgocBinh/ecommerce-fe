@@ -1,0 +1,151 @@
+.detailInfo_container
+    display: flex
+
+.detailInfo_image
+    width: 40%
+
+.detailInfo_image-product
+    width: 100%
+    object-fit: cover
+
+.detailInfo_content
+    width: 60%
+    margin-left: 20px
+
+    .detailInfo_content-name
+        font-size: 24px
+
+.detailInfo_rate-info
+    display: flex
+    padding-bottom: 10px
+    border-bottom: 1px solid #ccc
+
+.detaiInfo_rate-item
+    padding: 0 20px
+    border-right: 1px solid #ccc
+
+.detail_cost
+    margin: 20px 0
+    display: flex
+    align-items: center
+
+    .detailInfo_cost-real
+        text-decoration: line-through
+        color: #929292
+        margin-right: 10px
+
+    .detailInfo_cost-discount
+        color: #d0011b
+        font-size: 1.875rem
+        font-weight: 500
+
+    .detailInfo_cost-discountNumber
+        margin-left: 15px
+        font-size: .75rem
+        color: #fff
+        text-transform: uppercase
+        background: #ee4d2d
+        border-radius: 2px
+        padding: 2px 4px
+        font-weight: 600
+        line-height: 1
+        white-space: nowrap
+
+.detailInfo_vouchers
+    margin: 20px 0
+    display: flex
+
+    .detailInfo_vouchers-value
+        color: #d0011b
+        background-color: #e8a3ac
+        padding: 2px 10px
+        border-radius: 5px
+        cursor: pointer
+
+.detailInfo_title
+    color: #757575
+    width: 150px
+
+.detailInfo_shotdesc
+    display: flex
+
+.detailInfo_quantity
+    margin: 20px 0
+    display: flex
+    align-items: center
+
+    .detailInfo_quantity-direct
+        display: flex
+        height: 32px
+        border: 1px solid #00000051
+        align-items: center
+
+        .detailInfo_quantity-button
+            outline: none
+            cursor: pointer
+            border: 0
+            font-size: .875rem
+            font-weight: 300
+            line-height: 1
+            letter-spacing: 0
+            display: flex
+            align-items: center
+            justify-content: center
+            transition: background-color .1s cubic-bezier(.4,0,.6,1)
+            border-radius: 2px
+            background: transparent
+            color: rgba(0,0,0,.8)
+            width: 32px
+            height: 100%
+            font-size: 30px
+
+        .detailInfo_quantity-input
+            width: 50px
+            height: 100%
+            border-top: none
+            border-bottom: none
+            border-left: 1px solid #00000051
+            border-right: 1px solid #00000051
+            font-size: 16px
+            font-weight: 400
+            -moz-box-sizing: border-box
+            box-sizing: border-box
+            text-align: center
+            cursor: text
+            border-radius: 0
+            -webkit-appearance: none
+            outline: none
+    .detailInfo_quantity-available
+        color: #757575
+        margin-left: 20px
+
+.detailInfo_btn
+
+    .detailInfo_btn-all
+        font-weight: 600
+        padding-left: 30px
+        padding-right: 30px
+        vertical-align: top
+        max-height: 50px
+        font-size: 18px
+        display: inline-block
+        padding: 15px 45px
+        line-height: 20px
+        border: none
+        border-radius: 4px
+        -webkit-transition: all .4s ease
+        transition: all .4s ease
+        cursor: pointer
+
+    .detailInfo_btn-add
+        color: #fff
+        background-color: #000
+        margin-right: 10px
+        &:hover
+            background-color: #fcb800
+
+    .detailInfo_btn-by
+        background-color: #fcb800
+        &:hover
+            background-color: #333
+            color: #fff
