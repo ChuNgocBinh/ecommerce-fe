@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
 import './createShop.sass';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
+// import Button from '@mui/material/Button';
 import { FormattedMessage } from 'react-intl';
 // import { FormContainer, TextFieldElement } from 'react-hook-form-mui';
+import { useForm, Controller } from 'react-hook-form';
+import { Button, TextField } from '@mui/material';
 
 function CreateShop() {
   const [avatar, setAvatar] = useState('/image/upload.svg');
 
-  const handle = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('phonenumber'),
-    });
+  // const handle = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('phonenumber'),
+  //   });
+  // };
+
+  const handleChangeAvatar = (e) => {
+    const file = e.target.files[0];
+    const url = URL.createObjectURL(file);
+    console.log(url);
+    setAvatar(url);
   };
 
+  const { control, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
   return (
     <div className="create_shop-container">
       <div className="create_shop-box">
@@ -29,10 +40,135 @@ function CreateShop() {
             <label htmlFor="create_upload" className="create_upload-title">
               <img src={avatar} alt="avata" className="create_upload-img" />
             </label>
-            <input type="file" id="create_upload" className="create_upload-input" />
+            <input type="file" id="create_upload" className="create_upload-input" onChange={(e) => handleChangeAvatar(e)} />
           </div>
           <div className="create_shop-regist">
-            <Box component="form" onSubmit={handle} noValidate sx={{ mt: 1 }}>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Controller
+                name="shop_name"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    color="warning"
+                    label="Name Shop"
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="phone_number"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    color="warning"
+                    label="Phone Number"
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="email"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    color="warning"
+                    label="Email"
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="country"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    color="warning"
+                    label="Country"
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="province"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    color="warning"
+                    label="State/Province"
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="city"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    color="warning"
+                    label="city"
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="zip"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    margin="normal"
+                    fullWidth
+                    color="warning"
+                    label="Zip/Postal code"
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="description"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    color="warning"
+                    margin="normal"
+                    id="outlined-multiline-static"
+                    label="Description"
+                    multiline
+                    rows={4}
+                    fullWidth
+                  />
+                )}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                <FormattedMessage id="shop.create.button.create" />
+              </Button>
+            </form>
+
+            {/* <Box component="form" onSubmit={handle} noValidate sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -112,7 +248,7 @@ function CreateShop() {
               >
                 <FormattedMessage id="shop.create.button.create" />
               </Button>
-            </Box>
+            </Box> */}
           </div>
         </div>
       </div>
