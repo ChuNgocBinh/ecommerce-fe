@@ -1,83 +1,72 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-$background-color: #D7CCC8;
-$font-family: 'Roboto', sans-serif;
+// $background-color: #D7CCC8;
+// $font-family: 'Roboto', sans-serif;
 
-@mixin btn($fontcolor: #FAFAFA){
-  font-family: 'Roboto', sans-serif;
-  font-size: 15px;
-  outline: 0;
-  border: 0;
-  width: 100%;
-  padding: 15px;
-  background: #FF5722;
-  color: $fontcolor;
-  text-transform: uppercase;
-}
+// @mixin btn($fontcolor: #FAFAFA){
+//   font-family: 'Roboto', sans-serif;
+//   font-size: 15px;
+//   outline: 0;
+//   border: 0;
+//   width: 100%;
+//   padding: 15px;
+//   background: #FF5722;
+//   color: $fontcolor;
+//   text-transform: uppercase;
+// }
 
-@mixin message($fontcolor: #90A4AE){
-  color: $fontcolor;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-}
+// @mixin message($fontcolor: #90A4AE){
+//   color: $fontcolor;
+//   text-align: center;
+//   font-family: 'Roboto', sans-serif;
+//   font-size: 14px;
+// }
 
-@mixin input($bkgnd: #F5F5F5){
-  font-family: $font-family;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  outline: 0;
-  font-size: 15px;
-  text-align: center;
-  box-sizing: border-box;
-  background: $bkgnd;
-}
+// @mixin input($bkgnd: #F5F5F5){
+//   font-family: $font-family;
+//   width: 100%;
+//   border: 0;
+//   margin: 0 0 15px;
+//   padding: 15px;
+//   outline: 0;
+//   font-size: 15px;
+//   text-align: center;
+//   box-sizing: border-box;
+//   background: $bkgnd;
+// }
 
-body{
-  font-family: $font-family;
-  background: $background-color;
-}
+// body
+//   font-family: $font-family
+//   background: $background-color
 
+.container
+  padding: 8% 0 0
+  width: 365px
+  margin: auto
 
-.container{
-  padding: 8% 0 0;
-  width: 365px;
-  margin: auto;
-}
+.form
+  position: relative
+  z-index: 1
+  max-width: 350px
+  margin: 0 auto 100px
+  padding: 45px
+  background: #FFFFFF
 
-.form{
-  position: relative;
-  z-index: 1;
-  max-width: 350px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  background: #FFFFFF;
-}
+  // &
+  // input
+  //   @include input
 
-.form {
-  input{
-    @include input; 
-    
-    ::placeholder {
-      color: #90A4AE;
-    }
-  }
-  
-  .btn{
-    @include btn;
-  }
-  
-  .message {
-    @include message;
-    a {
-      text-decoration: none;
-      color: #00BFA5;
-    }
-  }
-}
+  //   ::placeholder
+  //     color: #90A4AE
 
-.form .register-form{
-  display: none;
-}
+  // .btn
+  //   @include btn
+
+  // .message
+  //   @include message
+  //   a
+  //     text-decoration: none
+  //     color: #00BFA5
+
+.form .register-form
+  display: none
