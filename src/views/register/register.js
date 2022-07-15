@@ -47,7 +47,7 @@ function Register() {
   };
 
   return (
-    <div className="login">
+    <div className="register_container">
       <h1> Register </h1>
       <input
         placeholder="Email..."
