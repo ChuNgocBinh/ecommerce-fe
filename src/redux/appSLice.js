@@ -16,7 +16,10 @@ export const appSlice = createSlice({
     changeLoading: (state, action) => {
       state.loading = action.payload;
     },
+    changeUserInfo: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
-export const { changeLocale, changeLoading } = appSlice.actions;
+export const { changeLocale, changeLoading, changeUserInfo } = appSlice.actions;
 export default appSlice.reducer;

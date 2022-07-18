@@ -1,83 +1,31 @@
-// @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import '../../styles/helpers'
 
-// $background-color: #D7CCC8;
-// $font-family: 'Roboto', sans-serif;
-
-// @mixin btn($fontcolor: #FAFAFA){
-//   font-family: 'Roboto', sans-serif;
-//   font-size: 15px;
-//   outline: 0;
-//   border: 0;
-//   width: 100%;
-//   padding: 15px;
-//   background: #FF5722;
-//   color: $fontcolor;
-//   text-transform: uppercase;
-// }
-
-// @mixin message($fontcolor: #90A4AE){
-//   color: $fontcolor;
-//   text-align: center;
-//   font-family: 'Roboto', sans-serif;
-//   font-size: 14px;
-// }
-
-// @mixin input($bkgnd: #F5F5F5){
-//   font-family: $font-family;
-//   width: 100%;
-//   border: 0;
-//   margin: 0 0 15px;
-//   padding: 15px;
-//   outline: 0;
-//   font-size: 15px;
-//   text-align: center;
-//   box-sizing: border-box;
-//   background: $bkgnd;
-// }
-
-
-
-.login_body
-  marin: 0
-  font-weight: 500
-  line-height: 1.5
-  color: #fff
-  text-align: left
-  background-color: 
-
-.login_container
-  padding: 0px 30px 
-  width: 500px
+.login_box
+  max-width: 430px
   margin: auto
-  height: 450px 
-  display: flex 
-  justify-content: center
-  flex-direction: column 
   background-color: #fff
-  border-radius: 40px 
-  transition: 0.9s
+  padding: 40px
 
-.login_form
-  width: 100px
-  height: 100vh
-  background: #fff
+  .login_title
+    font-weight: 400
+    color: #000
+    font-size: 30px
+    padding-bottom: 40px
+    max-width: 60%
+    margin: auto
+    text-align: center
 
-.login_container:hover
-  background-color: #fff
+  .login_btn
+    width: 100%
+    margin-top: 30px
+    background-color: $main-color
+    &:hover
+      background-color: $hover-color
+      color: #fff
 
-  // &
-  // input
-  //   @include input
-
-  //   ::placeholder
-  //     color: #90A4AE
-
-  // .btn
-  //   @include btn
-
-  // .message
-  //   @include message
-  //   a
-  //     text-decoration: none
-  //     color: #00BFA5
-
+  .login_link-register
+    margin-top: 20px
+    display: flex
+    align-items: center
+    p
+      margin-right: 20px

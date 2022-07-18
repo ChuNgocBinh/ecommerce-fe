@@ -1,31 +1,31 @@
-// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-// *{
-//   margin: 0;
-//   padding: 0;
-//   box-sizing: border-box;
-//   font-family: 'Poppins',sans-serif;
-// }
-// body{
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 10px;
-//   background: linear-gradient(135deg, #dee671, #e0bf00);
-// }
+@import '../../styles/helpers'
 
-.register_container:hover
-  background-color: #fff
-
-.register_container
-  width: 600px
-  height: 600px
+.register_box
+  max-width: 430px
   margin: auto
-  padding: auto
-  display: flex-direction
-  justify-content: center
-  flex-direction: column
   background-color: #fff
-  border-radius: 40px
-  transition: 0.9s
+  padding: 40px
 
+  .register_title
+    font-weight: 400
+    color: #000
+    font-size: 30px
+    padding-bottom: 40px
+    max-width: 60%
+    margin: auto
+    text-align: center
+
+  .register_btn
+    width: 100%
+    margin-top: 30px
+    background-color: $main-color
+    &:hover
+      background-color: $hover-color
+      color: #fff
+
+  .register_link-register
+    margin-top: 20px
+    display: flex
+    align-items: center
+    p
+      margin-right: 20px

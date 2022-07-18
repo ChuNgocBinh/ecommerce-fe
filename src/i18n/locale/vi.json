@@ -28,5 +28,7 @@
   "shop.create.title": "Create Shop Account",
   "shop.create.button.create": "Create",
   "shop.create.step2.title": "Please wait for the system to confirm. This process can take one to two days",
-  "register.button.register": "Đăng ký"
+  "user.button.login": "Login",
+  "user.button.register": "Register",
+  "user.link.register": "You don't have an account"
 }
