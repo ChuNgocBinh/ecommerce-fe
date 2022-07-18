@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { loginUser } from 'services/user';
 // import { auth } from 'firebase/firebase-config';
 // import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-// import Login from 'views/login/login';
 import './login.sass';
 
 function Login() {
@@ -41,7 +40,7 @@ function Login() {
 
   return (
     <div className="login">
-      <h1> Login </h1>
+      <h1>Login</h1>
       <input
         placeholder="Email..."
         onChange={

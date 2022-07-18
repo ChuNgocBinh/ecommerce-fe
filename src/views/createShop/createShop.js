@@ -37,7 +37,7 @@ function CreateShop() {
   }).required();
 
   const { control, handleSubmit } = useForm({
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data) => {
