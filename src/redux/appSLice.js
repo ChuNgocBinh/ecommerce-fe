@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   user: '',
   locale: 'vi',
+  loading: false,
 };
 
 export const appSlice = createSlice({
@@ -12,7 +13,13 @@ export const appSlice = createSlice({
     changeLocale: (state, action) => {
       state.locale = action.payload;
     },
+    changeLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+    changeUserInfo: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
-export const { changeLocale } = appSlice.actions;
+export const { changeLocale, changeLoading, changeUserInfo } = appSlice.actions;
 export default appSlice.reducer;

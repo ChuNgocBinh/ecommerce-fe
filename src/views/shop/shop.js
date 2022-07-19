@@ -64,9 +64,9 @@ function Shop() {
         <div className="shop_title">
           <FormattedMessage id="shop.regist.title" />
         </div>
-        <button className="shop_btn btn ">
+        <Link className="shop_btn btn " to="/shop/create">
           <FormattedMessage id="shop.regist.button.startselling" />
-        </button>
+        </Link>
       </div>
       <div className="shop_reson">
         <div className="shop-question"><FormattedMessage id="shop.regist.about.question" /></div>
@@ -82,7 +82,7 @@ function Shop() {
                 <div className="shop_reson-cart-content">
                   <FormattedMessage id={item.content} />
                 </div>
-                <Link to="/#"><FormattedMessage id="shop.regist.about.learnmore" /></Link>
+                <Link to="/"><FormattedMessage id="shop.regist.about.learnmore" /></Link>
               </div>
             ))
           }
