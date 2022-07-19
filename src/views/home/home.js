@@ -1,10 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 // import Login from 'views/login/login';
 // import Register from 'views/register/register';
 // import Shop from 'views/shop/shop';
 import './home.sass';
 
 function Home() {
+  // const local = localStorage.getItem('AuthToken');
+  // console.log('local', JSON.parse(local));
+
+  const stateRedux = useSelector((state) => state.app);
+  console.log('stateRedux', stateRedux);
   // const detail = {
   //   id: 1,
   //   product_name: '[NHẬP MÃ COSEUC0207A -10% ĐƠN 400K] Gel Chống Nắng Kiểm Soát Nhờn Eucerin Sun Dry Touch Oil Control Face SPF50+ 50ml',

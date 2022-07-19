@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './createShop.sass';
 import { FormattedMessage } from 'react-intl';
 import { useForm, Controller } from 'react-hook-form';
@@ -7,9 +7,10 @@ import {
 } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { createShop } from 'services/shop';
+import { createShop, getShopByUserId, updateShop } from 'services/shop';
 import { useDispatch } from 'react-redux';
 import { changeLoading } from 'redux/appSLice';
+import { useNavigate } from 'react-router-dom';
 
 const steps = [
   'Create shop',
@@ -20,9 +21,24 @@ const steps = [
 function CreateShop() {
   const [avatar, setAvatar] = useState('/image/upload.svg');
   const [fileUpload, setFileUpload] = useState();
-  const [stepSetting, setStepSetting] = useState(1);
-
+  const [stepSetting, setStepSetting] = useState(0);
+  const [shopAccount, setShopAccount] = useState();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const getShopUser = async () => {
+    const res = await getShopByUserId();
+    if (res?.status === 200) {
+      if (res?.data?.data) {
+        setShopAccount(res?.data?.data);
+        setStepSetting(res?.data?.data?.shop_account_status);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getShopUser();
+  }, []);
 
   const handleChangeAvatar = (e) => {
     const file = e.target.files[0];
@@ -31,10 +47,10 @@ function CreateShop() {
     setFileUpload(file);
   };
 
-  const schema = yup.object({
-    shop_name: yup.string().required(),
-    phone_number: yup.number().required(),
-  }).required();
+  // const schema = yup.object({
+  //   shop_name: yup.string().required(),
+  //   phone_number: yup.number().required(),
+  // }).required();
 
   const { control, handleSubmit } = useForm({
     // resolver: yupResolver(schema),
@@ -54,6 +70,16 @@ function CreateShop() {
     } catch (error) {
       console.log(error);
       dispatch(changeLoading(false));
+    }
+  };
+
+  const handleClickSellNow = async () => {
+    const res = await updateShop(shopAccount.id, {
+      shop_account_status: 3,
+    });
+
+    if (res?.status === 200 && res?.data?.status === 'success') {
+      navigate('/');
     }
   };
 
@@ -221,6 +247,24 @@ function CreateShop() {
               <div className="create_shop-step2-content">
                 <FormattedMessage id="shop.create.step2.title" />
               </div>
+            </div>
+          )
+        }
+        {
+          stepSetting === 2 && (
+            <div className="create_shop-step3">
+              <div className="create_shop-step2-box">
+                <img src="/image/success.gif" alt="wait" className="create_shop-step2-img" />
+              </div>
+              <div className="create_shop-step3-success">
+                <FormattedMessage id="shop.create.step3.success" />
+              </div>
+              <div className="create_shop-step3-title">
+                <FormattedMessage id="shop.create.step3.title" />
+              </div>
+              <button className="btn btn-hover" onClick={handleClickSellNow}>
+                <FormattedMessage id="shop.create.step3.btn" />
+              </button>
             </div>
           )
         }

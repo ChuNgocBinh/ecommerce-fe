@@ -4,13 +4,14 @@ import { TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
-import { loginUser, registerUser } from 'services/user';
+import { registerUser } from 'services/user';
 // import { auth } from 'firebase/firebase-config';
 // import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import './register.sass';
 import { Link } from 'react-router-dom';
+import { changeUserInfo } from 'redux/appSLice';
 
-function Login() {
+function Register() {
   const [avatar, setAvatar] = useState('/image/upload.svg');
   const [fileUpload, setFileUpload] = useState();
   const [stepSetting, setStepSetting] = useState(1);
@@ -26,7 +27,6 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       const res = await registerUser({
         username: data.user_name,
         phoneNumber: data.phone_number,
@@ -136,4 +136,4 @@ function Login() {
 
   );
 }
-export default Login;
+export default Register;

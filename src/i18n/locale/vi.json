@@ -28,6 +28,9 @@
   "shop.create.title": "Create Shop Account",
   "shop.create.button.create": "Create",
   "shop.create.step2.title": "Please wait for the system to confirm. This process can take one to two days",
+  "shop.create.step3.success": "Congratulation!",
+  "shop.create.step3.title": "Your shop account has been approved by the system",
+  "shop.create.step3.btn": "Let's get started",
   "user.button.login": "Login",
   "user.button.register": "Register",
   "user.link.register": "You don't have an account"

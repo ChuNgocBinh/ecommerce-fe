@@ -28,8 +28,10 @@ function Login() {
   const onSubmit = async (data) => {
     try {
       const res = await loginUser(data);
+      console.log(res);
       if (res.status === 200) {
-        dispatch(changeUserInfo(res?.data?.data?.user));
+        localStorage.setItem('AuthToken', JSON.stringify(`Bearer ${res?.data?.token}`));
+        dispatch(changeUserInfo(res?.data?.data));
         navigate('/');
       }
     } catch (error) {

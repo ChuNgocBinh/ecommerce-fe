@@ -7,7 +7,7 @@ const instance = axios.create({
 // Add a request interceptor
 instance.interceptors.request.use(
   (config) => {
-    const token = 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJjaHVuZ29jYmluaC4xNjdAZ21haWwuY29tIiwidXNlcm5hbWUiOiJyb290IiwiaWF0IjoxNjU3ODExNjM2LCJleHAiOjE2NTc4OTgwMzZ9.CQvx2f2JboQ5S4N_NdDBeM0W4EQ2NCKhw2WM3NkE0Qo';
+    const token = JSON.parse(localStorage.getItem('AuthToken'));
     config.headers.Authorization = token || '';
     return config;
   },
