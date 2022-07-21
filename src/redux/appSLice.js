@@ -1,10 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { get } from 'react-hook-form';
+import { getMe } from 'services/user';
 
 const initialState = {
   user: '',
   locale: 'vi',
   loading: false,
+  myShop: '',
 };
+
+export const fetchUserInfo = createAsyncThunk(
+  'users/fetchUserInfo',
+  // eslint-disable-next-line consistent-return
+  async () => {
+    const token = JSON.parse(localStorage.getItem('AuthToken'));
+    if (!token) {
+      return null;
+    }
+    const res = await getMe();
+    if (res.status === 200 && res?.data?.status === 'success') {
+      return res?.data?.data;
+    }
+    return null;
+  },
+);
 
 export const appSlice = createSlice({
   name: 'appredux',
@@ -19,7 +38,24 @@ export const appSlice = createSlice({
     changeUserInfo: (state, action) => {
       state.user = action.payload;
     },
+    changeShopInfo: (state, action) => {
+      state.myShop = action.payload;
+    },
+  },
+  extraReducers: {
+    [fetchUserInfo.pending]: (state) => {
+      state.status = 'loading';
+    },
+    [fetchUserInfo.fulfilled]: (state, action) => {
+      state.status = 'done';
+      state.user = action.payload;
+    },
+    [fetchUserInfo.rejected]: (state) => {
+      state.status = 'error';
+    },
   },
 });
-export const { changeLocale, changeLoading, changeUserInfo } = appSlice.actions;
+export const {
+  changeLocale, changeLoading, changeUserInfo, changeShopInfo,
+} = appSlice.actions;
 export default appSlice.reducer;
