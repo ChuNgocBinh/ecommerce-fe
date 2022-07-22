@@ -57,5 +57,6 @@
   "myshop.category.13": "Home & Life",
   "myshop.category.14": "Other",
   "notification.success": "Success",
-  "notification.error": "Error"
+  "notification.error": "Error",
+  "comment.btn": "Comment"
 }
