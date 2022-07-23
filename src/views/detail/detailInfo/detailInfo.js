@@ -1,10 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './detailInfo.sass';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
+import { addToCart, getAllCartByUserId, updateCartItem } from '../../../services/cart';
+import { useParams } from 'react-router-dom';
 
 function DetailInfo({ product }) {
   const [quantityNumber, setQuantityNumber] = useState(1);
+  const [cartData, setCartData] = useState([]);
+  const params = useParams();
+  const data = {
+    product_id: params?.product_id,
+    product_name: product?.product_name,
+    price: product?.cost,
+    quantity: quantityNumber,
+    total: quantityNumber * parseFloat(product?.cost),
+  };
+
+  const getCart = async () => {
+    try {
+      await getAllCartByUserId().then((res) => {
+        if (res.status === 200) {
+          setCartData(res?.data?.data);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleAddToCard = async () => {
+    try {
+      const matchData = cartData.filter((fill) => fill?.product_id === product?.id);
+      console.log('');
+      if (matchData.length > 0) {
+        await updateCartItem(matchData[0]?.id, {
+          quantity: matchData[0].quantity + quantityNumber,
+          total: (matchData[0].quantity + quantityNumber) * (matchData[0].price),
+        }).then((res) => {
+          if (res.status === 200) {
+            // eslint-disable-next-line
+            alert(res?.data?.status)
+            getCart();
+          }
+        });
+      } else {
+        await addToCart(data).then((res) => {
+          if (res?.status === 200) {
+            // eslint-disable-next-line
+            alert(res?.data?.status)
+            getCart();
+          }
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleClickIncrease = () => {
     setQuantityNumber(quantityNumber + 1);
@@ -15,6 +67,7 @@ function DetailInfo({ product }) {
       setQuantityNumber(quantityNumber - 1);
     }
   };
+  useEffect(() => { getCart(); }, []);
   return (
     <div className="detailInfo_container">
       <div className="detailInfo_image">
@@ -103,9 +156,7 @@ product available
           </div>
         </div>
         <div className="detailInfo_btn">
-          <buton className="detailInfo_btn-all detailInfo_btn-add">
-            Add to cart
-          </buton>
+          <buton className="detailInfo_btn-all detailInfo_btn-add" onClick={handleAddToCard}>Add to cart</buton>
           <buton className="detailInfo_btn-all detailInfo_btn-by">By now</buton>
         </div>
       </div>

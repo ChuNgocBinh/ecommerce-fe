@@ -6,6 +6,7 @@ const path = {
   sellerCenter: '/seller-center',
   createShop: '/shop/create',
   myShop: '/my-shop',
+  myCart: '/my-cart',
 };
 
 export const subPathMyShop = {

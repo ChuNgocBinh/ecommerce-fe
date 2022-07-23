@@ -8,6 +8,7 @@ import path, { subPathMyShop } from './path';
 import MyShop from 'views/my-shop/my_shop';
 import CreateProduct from 'views/my-shop/createProduct/createProduct';
 import ListMyProduct from 'views/my-shop/listProduct/listProduct';
+import MyCart from 'views/Cart/cart';
 
 const publicRoute = [
   { component: <Home />, path: path.default },
@@ -17,6 +18,7 @@ const publicRoute = [
   { component: <Shop />, path: path.sellerCenter },
   { component: <CreateShop />, path: path.createShop },
   { component: <MyShop />, path: path.myShop },
+  { component: <MyCart />, path: path.myCart },
 ];
 
 export const subRouterMyShop = [
