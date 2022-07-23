@@ -58,5 +58,6 @@
   "myshop.category.14": "Other",
   "notification.success": "Success",
   "notification.error": "Error",
-  "comment.btn": "Comment"
+  "comment.btn": "Comment",
+  "home.title": "List Product"
 }
