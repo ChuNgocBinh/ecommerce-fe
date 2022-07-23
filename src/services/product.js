@@ -1,9 +1,9 @@
-import request from 'interceptors/request';
+import request from "interceptors/request";
 
 export function createProduct(data) {
   return request({
-    url: '/product/create',
-    method: 'POST',
+    url: "/product/create",
+    method: "POST",
     data,
   });
 }
@@ -11,6 +11,13 @@ export function createProduct(data) {
 export function getProductById(product_id) {
   return request({
     url: `/product/${product_id}`,
-    method: 'GET',
+    method: "GET",
+  });
+}
+
+export function getListProduct() {
+  return request({
+    url: "/list-product",
+    method: "GET",
   });
 }

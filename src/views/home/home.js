@@ -1,69 +1,41 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-// import Login from 'views/login/login';
-// import Register from 'views/register/register';
-// import Shop from 'views/shop/shop';
-import './home.sass';
+import Card from "components/card/card";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getListProduct } from "services/product";
+
+import "./home.sass";
 
 function Home() {
-  // const local = localStorage.getItem('AuthToken');
-  // console.log('local', JSON.parse(local));
-
   const stateRedux = useSelector((state) => state.app);
-  console.log('stateRedux', stateRedux);
-  // const detail = {
-  //   id: 1,
-  //   product_name: '[NHẬP MÃ COSEUC0207A -10% ĐƠN 400K] Gel Chống Nắng Kiểm Soát Nhờn Eucerin Sun Dry Touch Oil Control Face SPF50+ 50ml',
-  //   created_by: 'Kieu Thanh Ka',
-  //   cost: 120000,
-  //   discount: 10,
-  //   image: 'https://cdn.tgdd.vn/Files/2022/05/26/1435102/lo-dien-concept-iphone-14-pro-voi-bang-mau-cuc-hut-9.jpg',
-  //   description: 'iphone 14',
-  //   brand: 'mobiphone',
-  //   amount: 50,
-  // };
+  const getProducts = async () => {
+    try {
+      const res = await getListProduct();
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // const detail = {
-  //   id: 1,
-  //   product_name: 'Tai nghe Bluetooth AirPods 3 Apple MME73 Trắng ',
-  //   created_by: 'Kieu Thanh Ka',
-  //   cost: 48000,
-  //   discount: 10,
-  //   image: 'https://www.thegioididong.com/tai-nghe/airpods-3-hop-sac-khong-day?src=osp#top-color-images-gallery-12',
-  //   description: 'tai nghe AirPod 3 ',
-  //   brand: 'mobiphone',
-  //   amount: 50,
-  // };
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-  // const detail = {
-  //   id: 1,
-  //   product_name: 'Pin sạc dự phòng Polymer 10.000 mAh Type C PD QC3.0 Xmobile PowerSlim PJ JP213',
-  //   created_by: 'Kieu Thanh Ka',
-  //   cost: 48000,
-  //   discount: 10,
-  //   image: 'https://www.thegioididong.com/sac-dtdd/sac-du-phong-10000mah-type-c-powerslim-jp213#top-color-images-gallery-75',
-  //   description: 'Pin sạc dự phòng',
-  //   brand: 'mobiphone',
-  //   amount: 50,
-  // };
+  const card = {
+    id: 1,
+    picture_url:
+      "https://vtv1.mediacdn.vn/thumb_w/650/2022/3/13/iphone-13-xanh-9-1647075654479-1647172182216920874045.jpg",
+    product_name: "hihihihi",
+    barnd: "hhi",
+    cost: 123123,
+    discount: 10,
+    rate: 100,
+  };
 
   return (
     <div className="home_container">
-      {/* <div className="detail_info">
-        <DetailInfo detail={detail} />
-      </div>
       <div>
-        <Login />
+        <Card data={card} />
       </div>
-      <div>
-        <Register />
-      </div>
-      <div>
-        <Shop />
-      </div>
-      <div>
-        <Footer />
-      </div> */}
     </div>
   );
 }
