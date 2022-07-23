@@ -21,3 +21,17 @@ export function getListProduct() {
     method: 'GET',
   });
 }
+
+export function getListMyProducts() {
+  return request({
+    url: '/product/list-my-products',
+    method: 'GET',
+  });
+}
+
+export function deleteProduct(product_id) {
+  return request({
+    url: `product/delete/${product_id}`,
+    method: 'DELETE',
+  });
+}

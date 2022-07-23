@@ -1,18 +1,18 @@
-import Card from "components/card/card";
-import React, { useEffect, useState } from "react";
-import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getListProduct } from "services/product";
+import Card from 'components/card/card';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getListProduct } from 'services/product';
 
-import "./home.sass";
+import './home.sass';
 
 function Home() {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     try {
       const res = await getListProduct();
-      if (res.status === 200 && res?.data?.status === "success") {
+      if (res.status === 200 && res?.data?.status === 'success') {
         console.log(res);
         setProducts(res?.data?.data);
       }

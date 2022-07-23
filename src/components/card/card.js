@@ -1,6 +1,6 @@
-import React from "react";
-import ReactStars from "react-stars";
-import "./card.sass";
+import React from 'react';
+import ReactStars from 'react-stars';
+import './card.sass';
 
 function Card({ data }) {
   console.log(data);
@@ -29,15 +29,15 @@ function Card({ data }) {
         </div>
         <div className="card_cost">
           <div className="card_cost-discount">
-            {(data.cost * ((100 - data.discount) / 100)).toLocaleString("vn", {
-              style: "currency",
-              currency: "VND",
+            {(data.cost * ((100 - data.discount) / 100)).toLocaleString('vn', {
+              style: 'currency',
+              currency: 'VND',
             })}
           </div>
           <div className="card_cost-number">
-            {data.cost.toLocaleString("vn", {
-              style: "currency",
-              currency: "VND",
+            {data.cost.toLocaleString('vn', {
+              style: 'currency',
+              currency: 'VND',
             })}
           </div>
         </div>
