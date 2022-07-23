@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getProductById } from 'services/product';
 import Comment from './comment/comment';
 import DescriptionProduct from './desProduct/desProduct';
 import DetailInfo from './detailInfo/detailInfo';
@@ -7,18 +8,24 @@ import './detailProduct.sass';
 import ShopDetail from './shopDetail/shopDetail';
 
 function DetailProduct() {
-  //   const { product_id } = useParams();
-  const detail = {
-    id: 1,
-    product_name: '[NHẬP MÃ COSEUC0207A -10% ĐƠN 400K] Gel Chống Nắng Kiểm Soát Nhờn Eucerin Sun Dry Touch Oil Control Face SPF50+ 50ml',
-    created_by: 'Chu Ngoc Binh',
-    cost: 120000,
-    discount: 10,
-    image: 'https://cdn.tgdd.vn/Files/2022/05/26/1435102/lo-dien-concept-iphone-14-pro-voi-bang-mau-cuc-hut-9.jpg',
-    description: 'iphone 14',
-    brand: 'mobiphone',
-    amount: 50,
+  const { product_id } = useParams();
+  const [product, setProduct] = useState('');
+
+  const fetchProduct = async () => {
+    try {
+      const res = await getProductById(product_id);
+
+      if (res?.status === 200 && res?.data?.status === 'success') {
+        setProduct(res?.data?.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    fetchProduct();
+  }, [product_id]);
 
   const cm = [
     {
@@ -30,7 +37,7 @@ function DetailProduct() {
       like: 5,
     },
     {
-      id: 1,
+      id: 2,
       createdBy: 'chu ngoc binh',
       avatar: 'https://upload.wikimedia.org/wikipedia/vi/thumb/b/b0/Avatar-Teaser-Poster.jpg/220px-Avatar-Teaser-Poster.jpg',
       rate: 4,
@@ -42,7 +49,7 @@ function DetailProduct() {
   return (
     <div className="detail_container">
       <div className="detail_info">
-        <DetailInfo detail={detail} />
+        <DetailInfo product={product} />
       </div>
       <div>
         <ShopDetail />

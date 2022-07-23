@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './detailInfo.sass';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 
-function DetailInfo({ detail }) {
+function DetailInfo({ product }) {
+  const [quantityNumber, setQuantityNumber] = useState(1);
+
+  const handleClickIncrease = () => {
+    setQuantityNumber(quantityNumber + 1);
+  };
+
+  const handleClickDecrease = () => {
+    if (quantityNumber > 0) {
+      setQuantityNumber(quantityNumber - 1);
+    }
+  };
   return (
     <div className="detailInfo_container">
       <div className="detailInfo_image">
-        <img src={detail.image} alt="img" className="detailInfo_image-product" />
+        <img src={product?.picture_url} alt="img" className="detailInfo_image-product" />
       </div>
       <div className="detailInfo_content">
-        <div className="detailInfo_content-name">{detail.product_name}</div>
+        <div className="detailInfo_content-name">{product?.product_name}</div>
         <div className="detailInfo_rate-info">
           <div className="detaiInfo_rate-item">
             <span>Brand:</span>
-            <span>{detail.brand}</span>
+            <span>{product?.brand}</span>
           </div>
           <div className="detaiInfo_rate-item">
             <span>4</span>
@@ -31,15 +42,15 @@ function DetailInfo({ detail }) {
         </div>
         <div className="detail_cost">
           <span className="detailInfo_cost-real">
-            {(detail.cost).toLocaleString('vn', { style: 'currency', currency: 'VND' })}
+            {product && (product.cost).toLocaleString('vn', { style: 'currency', currency: 'VND' })}
           </span>
           <span className="detailInfo_cost-discount">
-            {(detail.cost * ((100 - detail.discount) / 100)).toLocaleString('vn', { style: 'currency', currency: 'VND' })}
+            {product && (product.cost * ((100 - product.discount) / 100)).toLocaleString('vn', { style: 'currency', currency: 'VND' })}
           </span>
           <span className="detailInfo_cost-discountNumber">
             giảm
             {' '}
-            {detail.discount}
+            {product?.discount}
             %
           </span>
         </div>
@@ -50,17 +61,21 @@ function DetailInfo({ detail }) {
         <div className="detailInfo_shotdesc">
           <div className="detailInfo_title">Description: </div>
           <div className="detailInfo_shotdesc-content">
-            {detail.description}
+            {product?.description}
           </div>
         </div>
         <div className="detailInfo_quantity">
           <div className="detailInfo_title">Quantity: </div>
           <div className="detailInfo_quantity-direct">
-            <buton className="detailInfo_quantity-button"><IndeterminateCheckBoxIcon /></buton>
-            <input className="detailInfo_quantity-input" defaultValue={1} />
-            <buton className="detailInfo_quantity-button"><AddBoxIcon /></buton>
+            <buton className="detailInfo_quantity-button" onClick={handleClickDecrease}><IndeterminateCheckBoxIcon /></buton>
+            <input className="detailInfo_quantity-input" value={quantityNumber} />
+            <buton className="detailInfo_quantity-button" onClick={handleClickIncrease}><AddBoxIcon /></buton>
           </div>
-          <div className="detailInfo_quantity-available">665 product available</div>
+          <div className="detailInfo_quantity-available">
+            {product?.quantity}
+            {' '}
+            product available
+          </div>
         </div>
         <div className="detailInfo_btn">
           <buton className="detailInfo_btn-all detailInfo_btn-add">Add to cart</buton>

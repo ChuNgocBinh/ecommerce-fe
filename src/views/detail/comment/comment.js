@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './comment.sass';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ReactStars from 'react-stars';
+import { useAuth } from 'hook/useAuth';
+import { FormattedMessage } from 'react-intl';
+import { createComment, getListCommentByProductId } from 'services/comment';
+import { useParams } from 'react-router-dom';
 
 function Comment({ cm }) {
+  const user = useAuth();
+  const [star, setStar] = useState(0);
+  const [value, setValue] = useState('');
+  const [comments, setListComments] = useState([]);
+  const { product_id } = useParams();
+  console.log(user);
+  const handleClickCmt = async () => {
+    try {
+      const data = {
+        product_id,
+        createdBy: user.id,
+        content: value,
+        rate: star,
+      };
+
+      await createComment(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getListComment = async () => {
+    const res = await getListCommentByProductId(product_id);
+    console.log(res);
+    setListComments(res?.data?.data);
+  };
+
+  useEffect(() => {
+    getListComment();
+  }, []);
+
   return (
     <div className="comment_container">
       <div className="comment_container-title">ĐÁNH GIÁ SẢN PHẨM</div>
@@ -26,6 +61,27 @@ function Comment({ cm }) {
           <button>2 sao</button>
           <button>1 sao</button>
           <button>{'< 1 sao'}</button>
+        </div>
+      </div>
+      <div>
+        <div className="comment_item-container">
+          <div className="comment_img-user">
+            <img src={user.profile_picture} alt="img" className="comment_img-avatar" />
+          </div>
+          <div className="comment_item-content">
+            <div>
+              <ReactStars
+                count={5}
+                size={30}
+                value={star}
+                color2="#ffd700"
+                onChange={(newRating) => setStar(newRating)}
+              // edit
+              />
+            </div>
+            <div className="comment_item-input"><input className="input" value={value} onChange={(e) => setValue(e.target.value)} /></div>
+            <button onClick={handleClickCmt} className="btn_small"><FormattedMessage id="comment.btn" /></button>
+          </div>
         </div>
       </div>
       <div>

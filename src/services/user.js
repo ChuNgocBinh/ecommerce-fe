@@ -15,3 +15,10 @@ export function registerUser(data) {
     data,
   });
 }
+
+export function getMe() {
+  return request({
+    url: '/auth/me',
+    method: 'GET',
+  });
+}
