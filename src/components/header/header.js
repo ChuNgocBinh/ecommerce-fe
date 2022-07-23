@@ -9,13 +9,20 @@ import './header.sass';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { changeLocale } from 'redux/appSLice';
+import { Link } from 'react-router-dom';
 
 export const langs = [
   {
-    id: 1, value: 'en', icon: '/image/flag-en.png', title: 'English',
+    id: 1,
+    value: 'en',
+    icon: '/image/flag-en.png',
+    title: 'English',
   },
   {
-    id: 2, value: 'vi', icon: '/image/flag-vi.jpg', title: 'Việt Nam',
+    id: 2,
+    value: 'vi',
+    icon: '/image/flag-vi.jpg',
+    title: 'Việt Nam',
   },
 ];
 
@@ -31,7 +38,9 @@ function Header() {
   return (
     <div className="header_container">
       <div className="header_box">
-        <img src="/image/logo.png" alt="logo" className="header_brand" />
+        <Link to="/">
+          <img src="/image/logo.png" alt="logo" className="header_brand" />
+        </Link>
         <div className="header_search">
           <input />
           <button>
@@ -59,37 +68,37 @@ function Header() {
       <div className="header_options">
         <div className="header_nav header_nav-left">
           <MenuOutlinedIcon />
-          <div>
-            Shop By Department
-          </div>
+          <div>Shop By Department</div>
         </div>
         <div className="header_nav-right">
-          <div className="header_nav">
-            Seller Center
-          </div>
+          <div className="header_nav">Seller Center</div>
           <div className="header_i18n header_nav">
             <div className="header_lang">
-              <img src={langs[langCurrent - 1].icon} alt="flag" className="header_flag" />
+              <img
+                src={langs[langCurrent - 1].icon}
+                alt="flag"
+                className="header_flag"
+              />
               <div className="header_lang-name">
                 {langs[langCurrent - 1].title}
               </div>
               <KeyboardArrowDownIcon />
             </div>
             <ul className="header_list-lang">
-              {
-                langs.map((x) => (
-                  <li key={x.id} className="header_lang-item" onClick={() => handleClickLang(x.id)} aria-hidden="true">
-                    <img src={x.icon} alt="flag" className="header_flag" />
-                    <div className="header_lang-name">
-                      {x.title}
-                    </div>
-                  </li>
-                ))
-              }
+              {langs.map((x) => (
+                <li
+                  key={x.id}
+                  className="header_lang-item"
+                  onClick={() => handleClickLang(x.id)}
+                  aria-hidden="true"
+                >
+                  <img src={x.icon} alt="flag" className="header_flag" />
+                  <div className="header_lang-name">{x.title}</div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-
       </div>
     </div>
   );

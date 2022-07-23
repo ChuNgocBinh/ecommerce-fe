@@ -1,69 +1,65 @@
-import React from 'react';
+import Card from 'components/card/card';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
-// import Login from 'views/login/login';
-// import Register from 'views/register/register';
-// import Shop from 'views/shop/shop';
+import { Link } from 'react-router-dom';
+import { getListProduct } from 'services/product';
+
 import './home.sass';
 
 function Home() {
-  // const local = localStorage.getItem('AuthToken');
-  // console.log('local', JSON.parse(local));
+  const [products, setProducts] = useState([]);
+  const getProducts = async () => {
+    try {
+      const res = await getListProduct();
+      if (res.status === 200 && res?.data?.status === 'success') {
+        console.log(res);
+        setProducts(res?.data?.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const stateRedux = useSelector((state) => state.app);
-  console.log('stateRedux', stateRedux);
-  // const detail = {
-  //   id: 1,
-  //   product_name: '[NHẬP MÃ COSEUC0207A -10% ĐƠN 400K] Gel Chống Nắng Kiểm Soát Nhờn Eucerin Sun Dry Touch Oil Control Face SPF50+ 50ml',
-  //   created_by: 'Kieu Thanh Ka',
-  //   cost: 120000,
-  //   discount: 10,
-  //   image: 'https://cdn.tgdd.vn/Files/2022/05/26/1435102/lo-dien-concept-iphone-14-pro-voi-bang-mau-cuc-hut-9.jpg',
-  //   description: 'iphone 14',
-  //   brand: 'mobiphone',
-  //   amount: 50,
-  // };
-
-  // const detail = {
-  //   id: 1,
-  //   product_name: 'Tai nghe Bluetooth AirPods 3 Apple MME73 Trắng ',
-  //   created_by: 'Kieu Thanh Ka',
-  //   cost: 48000,
-  //   discount: 10,
-  //   image: 'https://www.thegioididong.com/tai-nghe/airpods-3-hop-sac-khong-day?src=osp#top-color-images-gallery-12',
-  //   description: 'tai nghe AirPod 3 ',
-  //   brand: 'mobiphone',
-  //   amount: 50,
-  // };
-
-  // const detail = {
-  //   id: 1,
-  //   product_name: 'Pin sạc dự phòng Polymer 10.000 mAh Type C PD QC3.0 Xmobile PowerSlim PJ JP213',
-  //   created_by: 'Kieu Thanh Ka',
-  //   cost: 48000,
-  //   discount: 10,
-  //   image: 'https://www.thegioididong.com/sac-dtdd/sac-du-phong-10000mah-type-c-powerslim-jp213#top-color-images-gallery-75',
-  //   description: 'Pin sạc dự phòng',
-  //   brand: 'mobiphone',
-  //   amount: 50,
-  // };
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div className="home_container">
-      {/* <div className="detail_info">
-        <DetailInfo detail={detail} />
+      <div className="home_header">
+        <div className="home_header-left">
+          <img
+            src="https://beta.apinouthemes.com/uploads/slide_3_1fcb990278.jpeg"
+            alt="home-img"
+            className="home_img-item"
+          />
+        </div>
+        <div className="home_header-right">
+          <img
+            src="https://beta.apinouthemes.com/uploads/promotion_1_d6deb591f0.jpeg"
+            alt="img"
+            className="home_img-item home_img-top"
+          />
+          <img
+            src="https://beta.apinouthemes.com/uploads/promotion_2_d252453586.jpeg"
+            alt="img"
+            className="home_img-item"
+          />
+        </div>
       </div>
-      <div>
-        <Login />
+      <div className="home_title">
+        <FormattedMessage id="home.title" />
       </div>
-      <div>
-        <Register />
+      <div className="home_card">
+        {products.map((item) => (
+          <div key={item.id} className="home_card-item">
+            <Link to={`/detail/${item.id}`} className="home_link-card">
+              <Card data={item} />
+            </Link>
+          </div>
+        ))}
       </div>
-      <div>
-        <Shop />
-      </div>
-      <div>
-        <Footer />
-      </div> */}
     </div>
   );
 }

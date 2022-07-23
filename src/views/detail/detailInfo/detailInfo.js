@@ -71,7 +71,11 @@ function DetailInfo({ product }) {
   return (
     <div className="detailInfo_container">
       <div className="detailInfo_image">
-        <img src={product?.picture_url} alt="img" className="detailInfo_image-product" />
+        <img
+          src={product?.picture_url}
+          alt="img"
+          className="detailInfo_image-product"
+        />
       </div>
       <div className="detailInfo_content">
         <div className="detailInfo_content-name">{product?.product_name}</div>
@@ -95,16 +99,24 @@ function DetailInfo({ product }) {
         </div>
         <div className="detail_cost">
           <span className="detailInfo_cost-real">
-            {product && (product.cost).toLocaleString('vn', { style: 'currency', currency: 'VND' })}
+            {product
+              && product.cost.toLocaleString('vn', {
+                style: 'currency',
+                currency: 'VND',
+              })}
           </span>
           <span className="detailInfo_cost-discount">
-            {product && (product.cost * ((100 - product.discount) / 100)).toLocaleString('vn', { style: 'currency', currency: 'VND' })}
+            {product
+              && (product.cost * ((100 - product.discount) / 100)).toLocaleString(
+                'vn',
+                { style: 'currency', currency: 'VND' },
+              )}
           </span>
           <span className="detailInfo_cost-discountNumber">
             giảm
             {' '}
             {product?.discount}
-            %
+%
           </span>
         </div>
         <div className="detailInfo_vouchers">
@@ -120,14 +132,27 @@ function DetailInfo({ product }) {
         <div className="detailInfo_quantity">
           <div className="detailInfo_title">Quantity: </div>
           <div className="detailInfo_quantity-direct">
-            <buton className="detailInfo_quantity-button" onClick={handleClickDecrease}><IndeterminateCheckBoxIcon /></buton>
-            <input className="detailInfo_quantity-input" value={quantityNumber} />
-            <buton className="detailInfo_quantity-button" onClick={handleClickIncrease}><AddBoxIcon /></buton>
+            <buton
+              className="detailInfo_quantity-button"
+              onClick={handleClickDecrease}
+            >
+              <IndeterminateCheckBoxIcon />
+            </buton>
+            <input
+              className="detailInfo_quantity-input"
+              value={quantityNumber}
+            />
+            <buton
+              className="detailInfo_quantity-button"
+              onClick={handleClickIncrease}
+            >
+              <AddBoxIcon />
+            </buton>
           </div>
           <div className="detailInfo_quantity-available">
             {product?.quantity}
             {' '}
-            product available
+product available
           </div>
         </div>
         <div className="detailInfo_btn">

@@ -11,6 +11,7 @@ const path = {
 
 export const subPathMyShop = {
   createProduct: 'create-product',
+  listMyProduct: 'list-products',
 };
 
 export default path;

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ContentMyShop from './content/createProduct';
+import ContentMyShop from './createProduct/createProduct';
 import SideBarMyShop from './sideBar/sideBar_myshop';
 import './my_shop.sass';
 import { useAuth } from 'hook/useAuth';

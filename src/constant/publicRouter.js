@@ -4,9 +4,10 @@ import Home from 'views/home/home';
 import Shop from 'views/shop/shop';
 import Login from 'views/login/login';
 import Register from 'views/register/register';
-import path from './path';
+import path, { subPathMyShop } from './path';
 import MyShop from 'views/my-shop/my_shop';
-import CreateProduct from 'views/my-shop/content/createProduct';
+import CreateProduct from 'views/my-shop/createProduct/createProduct';
+import ListMyProduct from 'views/my-shop/listProduct/listProduct';
 import MyCart from 'views/Cart/cart';
 
 const publicRoute = [
@@ -21,7 +22,8 @@ const publicRoute = [
 ];
 
 export const subRouterMyShop = [
-  { component: <CreateProduct />, path: path.createProduct },
+  { component: <CreateProduct />, path: subPathMyShop.createProduct },
+  { component: <ListMyProduct />, path: subPathMyShop.listMyProduct },
 ];
 
 export default publicRoute;
