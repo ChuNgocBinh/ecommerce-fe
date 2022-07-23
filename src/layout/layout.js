@@ -23,16 +23,11 @@ function Layout({ children }) {
   return (
     <div>
       {loading && <Loader />}
-      <IntlProvider
-        messages={messages[locale]}
-        locale={appLocale[locale]}
-      >
+      <IntlProvider messages={messages[locale]} locale={appLocale[locale]}>
         <div className="layout_header">
           <Header />
         </div>
-        <div className="layout_body">
-          {children}
-        </div>
+        <div className="layout_body">{children}</div>
         <NotificationContainer />
       </IntlProvider>
     </div>

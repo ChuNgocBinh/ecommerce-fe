@@ -10,7 +10,14 @@ export function createProduct(data) {
 
 export function getProductById(product_id) {
   return request({
-    url: `/product/${product_id}`,
+    url: `/product/item/${product_id}`,
+    method: 'GET',
+  });
+}
+
+export function getListProduct() {
+  return request({
+    url: '/product/list-product',
     method: 'GET',
   });
 }

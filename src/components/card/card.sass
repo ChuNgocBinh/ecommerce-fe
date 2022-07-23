@@ -1,0 +1,67 @@
+.card_container
+  position: relative
+  padding: 20px
+  width: 226px
+  background-color: #fff
+  // box-shadow: 0px 0px 1px #00000054
+  border-radius: 5px
+  cursor: pointer
+  &:hover
+    // border: 1px solid #ccc
+    transform: scale(1.05)
+    transition: all 0.5s
+    border: 1px solid #ccc
+
+  .card_picture
+    width: 100%
+    .card_img
+      width: 100%
+      object-fit: cover
+
+  .card_content
+    padding-top: 10px
+
+    .card_shopname
+      display: block
+      padding-bottom: 8px
+      margin-bottom: 13px
+      line-height: 1.2
+      font-size: 12px
+      color: #000
+      text-transform: uppercase
+      border-bottom: 1px solid #e1e1e1
+
+    .card_productname
+      margin: 0
+      display: block
+      font-size: 14px
+      line-height: 1.2em
+      color: #06c
+      --max-lines: 2
+      max-height: calc(1.2em * var(--max-lines))
+      overflow: hidden
+      padding: 0 1rem 5px 0
+
+    .card_rate
+      display: flex
+
+      .card_rate-count
+        color: #666
+
+.card_cost
+  display: flex
+  align-items: center
+
+.card_cost-number
+  text-decoration: line-through
+  color: #929292
+  margin-right: 10px
+  font-size: 12px
+
+.card_cost-discount
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  font-size: 1rem
+  color: #ee4d2d
+  margin-right: 10px
