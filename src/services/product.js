@@ -1,9 +1,9 @@
-import request from "interceptors/request";
+import request from 'interceptors/request';
 
 export function createProduct(data) {
   return request({
-    url: "/product/create",
-    method: "POST",
+    url: '/product/create',
+    method: 'POST',
     data,
   });
 }
@@ -11,27 +11,27 @@ export function createProduct(data) {
 export function getProductById(product_id) {
   return request({
     url: `/product/item/${product_id}`,
-    method: "GET",
+    method: 'GET',
   });
 }
 
 export function getListProduct() {
   return request({
-    url: "/product/list-product",
-    method: "GET",
+    url: '/product/list-product',
+    method: 'GET',
   });
 }
 
 export function getListMyProducts() {
   return request({
-    url: "/product/list-my-products",
-    method: "GET",
+    url: '/product/list-my-products',
+    method: 'GET',
   });
 }
 
 export function deleteProduct(product_id) {
   return request({
     url: `product/delete/${product_id}`,
-    method: "DELETE",
+    method: 'DELETE',
   });
 }

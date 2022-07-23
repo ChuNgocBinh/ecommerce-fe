@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
-import "./listProduct.sass";
+import React, { useEffect, useState } from 'react';
+import './listProduct.sass';
 // eslint-disable-next-line object-curly-newline
-import { Table, TableCell, TableHead, TableRow } from "@mui/material";
-import { FormattedMessage } from "react-intl";
-import { deleteProduct, getListMyProducts } from "services/product";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { NotificationManager } from "react-notifications";
-import { discount } from "constant/constant";
+import { Table, TableCell, TableHead, TableRow } from '@mui/material';
+import { FormattedMessage } from 'react-intl';
+import { deleteProduct, getListMyProducts } from 'services/product';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { NotificationManager } from 'react-notifications';
+import { discount } from 'constant/constant';
 
 function ListMyProduct() {
   const [products, setProducts] = useState([]);
 
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "VND",
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'VND',
   });
 
   const fetchListMyProducts = async () => {
     try {
       const result = await getListMyProducts();
       console.log(result);
-      if (result.status === 200 && result?.data?.status === "success") {
+      if (result.status === 200 && result?.data?.status === 'success') {
         setProducts(result?.data?.data);
       }
     } catch (error) {
@@ -33,20 +33,20 @@ function ListMyProduct() {
   const handleDeleteProduct = async (id) => {
     try {
       const res = await deleteProduct(id);
-      if (res?.status === 200 && res?.data?.status === "success") {
+      if (res?.status === 200 && res?.data?.status === 'success') {
         const newProducts = products.filter((item) => item.id !== id);
         setProducts(newProducts);
         NotificationManager.success(
-          "Create success",
-          <FormattedMessage id="notification.success" />
+          'Create success',
+          <FormattedMessage id="notification.success" />,
         );
       }
     } catch (error) {
       console.log(error);
     } finally {
       NotificationManager.error(
-        "Create error",
-        <FormattedMessage id="notification.error" />
+        'Create error',
+        <FormattedMessage id="notification.error" />,
       );
     }
   };
@@ -77,7 +77,7 @@ function ListMyProduct() {
         {products.map((product) => (
           <TableRow
             key={product.id}
-            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
             <TableCell component="th" scope="row">
               {product.id}
