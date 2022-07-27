@@ -1,0 +1,61 @@
+@import ../../styles/helpers
+
+.step-selling-box
+  display: flex
+  position: relative
+  // padding-bottom: 90px
+
+  .step_selling-content
+    width: 50%
+    padding: 0 10%
+    box-sizing: border-box
+
+  .step_selling-img
+    width: 50%
+    display: flex
+    justify-content: center
+    padding-bottom: 90px
+
+.step_selling-title
+  margin-bottom: 30px
+  font-size: 22px
+  font-weight: 600
+  color: #000
+  line-height: 1.2em
+
+.step_selling-list
+  margin-bottom: 20px
+  font-size: 16px
+  color: #666
+  li
+    margin-bottom: 20px
+
+.step-selling-2, .step-selling-4
+  flex-direction: row-reverse
+
+.step-selling-2
+  .step_selling-content
+    border-left: 2px solid $main-color
+
+.step-selling-1, .step-selling-3
+  .step_selling-content
+    border-right: 2px solid $main-color
+
+.step-selling-number
+  position: absolute
+  display: flex
+  align-items: center
+  justify-content: center
+  position: absolute
+  top: 0
+  left: 50%
+  -webkit-transform: translateX(-50%)
+  transform: translateX(-50%)
+  width: 100px
+  height: 100px
+  background-color: #fff
+  border: 2px solid $main-color
+  border-radius: 50%
+  span
+    font-size: 48px
+    color: #000
