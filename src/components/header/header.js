@@ -42,10 +42,13 @@ function Header() {
           <img src="/image/logo.png" alt="logo" className="header_brand" />
         </Link>
         <div className="header_search">
-          <input />
-          <button>
-            <FormattedMessage id="header.search" />
-          </button>
+          <form>
+            <input />
+            <button>
+              <FormattedMessage id="header.search" />
+            </button>
+            <div className="header_search-find" />
+          </form>
         </div>
         <div className="header_action">
           <div className="header_icon">

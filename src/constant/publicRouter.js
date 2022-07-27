@@ -9,6 +9,7 @@ import MyShop from 'views/my-shop/my_shop';
 import CreateProduct from 'views/my-shop/createProduct/createProduct';
 import ListMyProduct from 'views/my-shop/listProduct/listProduct';
 import MyCart from 'views/Cart/cart';
+import ListMyProductAccept from 'views/my-shop/listProductWaiting/listProductAccept';
 
 const publicRoute = [
   { component: <Home />, path: path.default },
@@ -24,6 +25,7 @@ const publicRoute = [
 export const subRouterMyShop = [
   { component: <CreateProduct />, path: subPathMyShop.createProduct },
   { component: <ListMyProduct />, path: subPathMyShop.listMyProduct },
+  { component: <ListMyProductAccept />, path: subPathMyShop.listMyProductAccept },
 ];
 
 export default publicRoute;

@@ -28,6 +28,16 @@ function SideBarMyShop() {
           />
         </ListItemButton>
       </Link>
+      <Link to="/my-shop/list-products-accept">
+        <ListItemButton>
+          <ListItemIcon>
+            <DnsIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary={<FormattedMessage id="myshop.sidebar.list.accept" />}
+          />
+        </ListItemButton>
+      </Link>
     </div>
   );
 }

@@ -35,7 +35,8 @@
   "user.button.register": "Register",
   "user.link.register": "You don't have an account",
   "myshop.sidebar.create": "Create new product",
-  "myshop.sidebar.list": "List my product",
+  "myshop.sidebar.list": "List my product waiting",
+  "myshop.sidebar.list.accept": "List my product accept",
   "myshop.create.nameproduct": "Name Product",
   "myshop.create.brand": "Brand",
   "myshop.create.cost": "Cost",
@@ -61,7 +62,6 @@
   "myshop.list.table.cost": "Cost",
   "myshop.list.table.discount": "Discount",
   "myshop.list.table.action": "Actions",
-
   "notification.success": "Success",
   "notification.error": "Error",
   "comment.btn": "Comment",
