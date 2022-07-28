@@ -28,7 +28,7 @@ function Login() {
   const onSubmit = async (data) => {
     try {
       const res = await loginUser(data);
-      console.log(res);
+      console.log('res', res?.data);
       if (res.status === 200) {
         localStorage.setItem('AuthToken', JSON.stringify(`Bearer ${res?.data?.token}`));
         dispatch(changeUserInfo(res?.data?.data));

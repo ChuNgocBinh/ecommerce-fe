@@ -6,10 +6,14 @@ const path = {
   sellerCenter: '/seller-center',
   createShop: '/shop/create',
   myShop: '/my-shop',
+  myCart: '/my-cart',
+  myProfile: '/my-profile',
 };
 
 export const subPathMyShop = {
   createProduct: 'create-product',
+  listMyProduct: 'list-products',
+  listMyProductAccept: 'list-products-accept',
 };
 
 export default path;
