@@ -58,7 +58,7 @@ function Footer() {
           </div>
         </div>
       </footer>
-      <div>© 2021 Smart Ecommrece. All Rights Reserved</div>
+      <div className="footer_end">© 2021 Smart Ecommrece. All Rights Reserved</div>
     </div>
   );
 }
