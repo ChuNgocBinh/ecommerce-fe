@@ -22,3 +22,11 @@ export function getMe() {
     method: 'GET',
   });
 }
+
+export function editUser(data) {
+  return request({
+    url: '/auth/update-user',
+    method: 'POST',
+    data,
+  });
+}

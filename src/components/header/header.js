@@ -61,7 +61,9 @@ function Header() {
             <div className="header_count">1</div>
           </div>
           <div>
-            <AccountCircleOutlinedIcon fontSize="large" />
+            <Link to="/my-profile">
+              <AccountCircleOutlinedIcon fontSize="large" />
+            </Link>
           </div>
         </div>
       </div>
