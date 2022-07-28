@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { get } from 'react-hook-form';
 import { getMe } from 'services/user';
 
 const initialState = {
