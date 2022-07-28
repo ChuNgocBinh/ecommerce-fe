@@ -12,11 +12,14 @@ import {
 import EditMyProfile from './editProfile';
 import { getMe } from 'services/user';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeUserInfo } from 'redux/appSLice';
 
 function MyProfile() {
   const navigate = useNavigate();
   const [isEdit, setIsEdit] = useState(false);
   const [profile, setProfile] = useState({});
+  const dispatch = useDispatch();
 
   const handleEdit = () => {
     setIsEdit(true);
@@ -27,6 +30,7 @@ function MyProfile() {
   const handleLogOut = () => {
     navigate('/login');
     localStorage.removeItem('AuthToken');
+    dispatch(changeUserInfo(''));
   };
 
   useEffect(() => {
@@ -49,7 +53,7 @@ function MyProfile() {
           <div className="avatar_info">
             <Avatar
               alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
+              src={`${profile?.profile_picture}`}
               sx={{ width: 70, height: 70 }}
             />
             <div className="info">

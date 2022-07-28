@@ -37,6 +37,7 @@ function Header() {
   };
 
   const user = useAuth();
+  console.log(user);
 
   return (
     <div className="header_container">
@@ -71,7 +72,7 @@ function Header() {
           <div>
             <Link to="/my-profile">
               {
-                user ? <img src={user.profile_picture} alt="avatar" className="header_avatar" /> : <AccountCircleOutlinedIcon fontSize="large" />
+                user ? <img src={user?.profile_picture} alt="avatar" className="header_avatar" /> : <AccountCircleOutlinedIcon fontSize="large" />
               }
             </Link>
           </div>

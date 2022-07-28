@@ -45,9 +45,9 @@ function App() {
         {/* <Route element={<GuestRouter />}> */}
         {renderPublicRoute()}
         {/* </Route> */}
-        <Route element={<PrivateRouter />}>
-          {renderPrivateRoute()}
-        </Route>
+        {/* <Route element={<PrivateRouter />}> */}
+        {renderPrivateRoute()}
+        {/* </Route> */}
       </Routes>
     </Layout>
   );
