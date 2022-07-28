@@ -8,8 +8,9 @@ import { registerUser } from 'services/user';
 // import { auth } from 'firebase/firebase-config';
 // import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import './register.sass';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { changeUserInfo } from 'redux/appSLice';
+import { NotificationManager } from 'react-notifications';
 
 function Register() {
   const [avatar, setAvatar] = useState('/image/upload.svg');
@@ -17,6 +18,7 @@ function Register() {
   const [stepSetting, setStepSetting] = useState(1);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // const schema = yup.object({
   //   shop_name: yup.string().required(),
@@ -33,8 +35,19 @@ function Register() {
         email: data.email,
         password: data.password,
       });
+      if (res?.status === 200) {
+        NotificationManager.success(
+          'Create success',
+          <FormattedMessage id="notification.success" />,
+        );
+        navigate('/login');
+      }
     } catch (error) {
       console.log(error);
+      NotificationManager.error(
+        'Create error',
+        <FormattedMessage id="notification.error" />,
+      );
     }
   };
 

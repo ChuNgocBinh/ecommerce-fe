@@ -7,6 +7,16 @@ import { getListProduct } from 'services/product';
 
 import './home.sass';
 
+const items = [
+  { title: 'Electronics', src: 'https://reactstorefronts.com/static/img/categories/1.jpg' },
+  { title: 'Clothings', src: 'https://reactstorefronts.com/static/img/categories/2.jpg' },
+  { title: 'Computers', src: 'https://reactstorefronts.com/static/img/categories/3.jpg' },
+  { title: 'Home & Kitchen', src: 'https://reactstorefronts.com/static/img/categories/4.jpg' },
+  { title: 'Health & Beauty', src: 'https://reactstorefronts.com/static/img/categories/5.jpg' },
+  { title: 'Jewelry & Watch', src: 'https://reactstorefronts.com/static/img/categories/7.jpg' },
+  { title: 'Technology Toys', src: 'https://reactstorefronts.com/static/img/categories/8.jpg' },
+];
+
 function Home() {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
@@ -46,6 +56,23 @@ function Home() {
             alt="img"
             className="home_img-item"
           />
+        </div>
+      </div>
+      <div>
+        <div>
+          <div className="home_title">
+            <FormattedMessage id="home.category" />
+          </div>
+          <div className="home_category">
+            {
+              items.map((item) => (
+                <div key={item.title} className="home_category-box">
+                  <img src={item.src} alt="category" />
+                  <div>{item.title}</div>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
       <div className="home_title">

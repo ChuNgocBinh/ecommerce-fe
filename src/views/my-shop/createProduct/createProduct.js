@@ -40,13 +40,13 @@ function CreateProduct() {
           <label>
             <FormattedMessage id="myshop.create.nameproduct" />
           </label>
-          <input {...register('product_name')} />
+          <input className="input" {...register('product_name')} />
         </div>
         <div className="form_group">
           <label>
             <FormattedMessage id="myshop.create.brand" />
           </label>
-          <select {...register('brand')}>
+          <select {...register('brand')} className="input">
             {category.map((item) => (
               <option value={item.value} key={item.value}>
                 {item.label}
@@ -58,13 +58,13 @@ function CreateProduct() {
           <label>
             <FormattedMessage id="myshop.create.cost" />
           </label>
-          <input {...register('cost')} />
+          <input className="input" {...register('cost')} />
         </div>
         <div className="form_group">
           <label>
             <FormattedMessage id="myshop.create.discount" />
           </label>
-          <select {...register('discount')}>
+          <select {...register('discount')} className="input">
             {discount.map((item) => (
               <option value={item.value} key={item.value}>
                 {item.label}
@@ -76,19 +76,19 @@ function CreateProduct() {
           <label>
             <FormattedMessage id="myshop.create.quantity" />
           </label>
-          <input {...register('quantity')} />
+          <input className="input" {...register('quantity')} />
         </div>
         <div className="form_group">
           <label>
             <FormattedMessage id="myshop.create.description" />
           </label>
-          <input {...register('description')} />
+          <input className="input" {...register('description')} />
         </div>
         <div className="form_group">
           <label>
             <FormattedMessage id="myshop.create.detail" />
           </label>
-          <input {...register('detail')} />
+          <input className="input" {...register('detail')} />
         </div>
 
         <button type="submit" className="register_btn btn">

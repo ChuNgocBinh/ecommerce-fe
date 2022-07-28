@@ -65,5 +65,6 @@
   "notification.success": "Success",
   "notification.error": "Error",
   "comment.btn": "Comment",
-  "home.title": "List Product"
+  "home.title": "List Product",
+  "home.category": "Top Categories Of The Month"
 }
