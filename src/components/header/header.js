@@ -84,7 +84,7 @@ function Header() {
         </div>
         <div className="header_nav-right">
           <div className="header_nav">
-            <Link to={!user.shop_id ? '/seller-center'
+            <Link to={!user?.shop_id ? '/seller-center'
               : user?.shop_account_status === 3 ? '/my-shop'
                 : '/shop/create'}
             >
