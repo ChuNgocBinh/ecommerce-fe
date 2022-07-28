@@ -9,6 +9,7 @@ import MyShop from 'views/my-shop/my_shop';
 import CreateProduct from 'views/my-shop/createProduct/createProduct';
 import ListMyProduct from 'views/my-shop/listProduct/listProduct';
 import MyCart from 'views/Cart/cart';
+import MyProfile from 'views/accountUser/myProfile';
 import ListMyProductAccept from 'views/my-shop/listProductWaiting/listProductAccept';
 
 const publicRoute = [

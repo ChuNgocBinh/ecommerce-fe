@@ -5,11 +5,13 @@ import CreateProduct from 'views/my-shop/createProduct/createProduct';
 import ListMyProduct from 'views/my-shop/listProduct/listProduct';
 import MyCart from 'views/Cart/cart';
 import ListMyProductAccept from 'views/my-shop/listProductWaiting/listProductAccept';
+import MyProfile from 'views/accountUser/myProfile';
 
 const privateRoute = [
   { component: <Shop />, path: path.sellerCenter },
   { component: <MyShop />, path: path.myShop },
   { component: <MyCart />, path: path.myCart },
+  { component: <MyProfile />, path: path.myProfile },
 ];
 
 export const subRouterMyShop = [

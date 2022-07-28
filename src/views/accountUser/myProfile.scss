@@ -1,0 +1,58 @@
+.cardPersonal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 40px;
+
+  .avatar_info {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+
+      .userName {
+        margin: 5px auto;
+      }
+
+      .info_action {
+        text-transform: capitalize;
+        .edit {
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+
+  .text_icon {
+    margin-left: 5px;
+  }
+
+  .content_row {
+    margin: 20px 0px;
+  }
+}
+
+.form_content {
+  padding: 5px 150px;
+
+  .form_group {
+    margin: 5px 0px;
+
+    .form_row {
+      margin: 3px 0px;
+      border: 1px solid;
+      border-radius: 4px;
+      height: 20px;
+    }
+  }
+  .btn_save {
+    height: 40px;
+    text-align: center !important;
+    padding: 5px 40px !important;
+  }
+}

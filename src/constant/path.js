@@ -7,6 +7,7 @@ const path = {
   createShop: '/shop/create',
   myShop: '/my-shop',
   myCart: '/my-cart',
+  myProfile: '/my-profile',
 };
 
 export const subPathMyShop = {

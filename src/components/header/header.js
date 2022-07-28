@@ -69,7 +69,7 @@ function Header() {
             </Link>
           </div>
           <div>
-            <Link to="/profile">
+            <Link to="/my-profile">
               {
                 user ? <img src={user.profile_picture} alt="avatar" className="header_avatar" /> : <AccountCircleOutlinedIcon fontSize="large" />
               }
