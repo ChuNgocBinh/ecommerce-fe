@@ -10,22 +10,23 @@ import CreateProduct from 'views/my-shop/createProduct/createProduct';
 import ListMyProduct from 'views/my-shop/listProduct/listProduct';
 import MyCart from 'views/Cart/cart';
 import MyProfile from 'views/accountUser/myProfile';
+import ListMyProductAccept from 'views/my-shop/listProductWaiting/listProductAccept';
 
 const publicRoute = [
   { component: <Home />, path: path.default },
   { component: <Login />, path: path.login },
   { component: <Register />, path: path.signup },
   { component: <DetailProduct />, path: path.detail },
-  { component: <Shop />, path: path.sellerCenter },
+  // { component: <Shop />, path: path.sellerCenter },
   { component: <CreateShop />, path: path.createShop },
-  { component: <MyShop />, path: path.myShop },
-  { component: <MyCart />, path: path.myCart },
-  { component: <MyProfile />, path: path.myProfile },
+  // { component: <MyShop />, path: path.myShop },
+  // { component: <MyCart />, path: path.myCart },1
 ];
 
-export const subRouterMyShop = [
-  { component: <CreateProduct />, path: subPathMyShop.createProduct },
-  { component: <ListMyProduct />, path: subPathMyShop.listMyProduct },
-];
+// export const subRouterMyShop = [
+//   { component: <CreateProduct />, path: subPathMyShop.createProduct },
+//   { component: <ListMyProduct />, path: subPathMyShop.listMyProduct },
+//   { component: <ListMyProductAccept />, path: subPathMyShop.listMyProductAccept },
+// ];
 
 export default publicRoute;

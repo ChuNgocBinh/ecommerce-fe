@@ -35,3 +35,25 @@ export function deleteProduct(product_id) {
     method: 'DELETE',
   });
 }
+
+export function getListMyProductAccept() {
+  return request({
+    url: '/product/list-my-products-accept',
+    method: 'GET',
+  });
+}
+
+export function getListMyProductWaiting() {
+  return request({
+    url: '/product/list-my-products-waiting',
+    method: 'GET',
+  });
+}
+
+export function updateProudct(data, id) {
+  return request({
+    url: `/product/update-product/${id}`,
+    method: 'POST',
+    data,
+  });
+}

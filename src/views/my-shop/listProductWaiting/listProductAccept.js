@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './listProduct.sass';
+import './listProductAccept.sass';
 // eslint-disable-next-line object-curly-newline
 import { Table, TableCell, TableHead, TableRow, TextField } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
 import {
-  deleteProduct, getListMyProducts, getListMyProductWaiting, updateProudct,
+  deleteProduct, getListMyProductAccept, updateProudct,
 } from 'services/product';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
@@ -13,7 +13,7 @@ import { NotificationManager } from 'react-notifications';
 import { discount } from 'constant/constant';
 import Modal from 'components/modal/modal';
 
-function ListMyProduct() {
+function ListMyProductAccept() {
   const [products, setProducts] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
@@ -25,7 +25,7 @@ function ListMyProduct() {
 
   const fetchListMyProducts = async () => {
     try {
-      const result = await getListMyProductWaiting();
+      const result = await getListMyProductAccept();
       console.log(result);
       if (result.status === 200 && result?.data?.status === 'success') {
         setProducts(result?.data?.data);
@@ -62,9 +62,8 @@ function ListMyProduct() {
 
   const handleClickDetail = (product) => {
     setOpenDialog(true);
-    console.log(product);
-    setCurrentProduct(product);
     setDetail(true);
+    setCurrentProduct(product);
   };
   console.log(currentProduct);
   const handleConfirm = async () => {
@@ -287,4 +286,4 @@ function ListMyProduct() {
   );
 }
 
-export default ListMyProduct;
+export default ListMyProductAccept;

@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -10,6 +10,7 @@ import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { changeLocale } from 'redux/appSLice';
 import { Link } from 'react-router-dom';
+import { useAuth } from 'hook/useAuth';
 
 export const langs = [
   {
@@ -35,6 +36,8 @@ function Header() {
     dispatch(changeLocale(curLang));
   };
 
+  const user = useAuth();
+
   return (
     <div className="header_container">
       <div className="header_box">
@@ -42,10 +45,13 @@ function Header() {
           <img src="/image/logo.png" alt="logo" className="header_brand" />
         </Link>
         <div className="header_search">
-          <input />
-          <button>
-            <FormattedMessage id="header.search" />
-          </button>
+          <form>
+            <input />
+            <button>
+              <FormattedMessage id="header.search" />
+            </button>
+            <div className="header_search-find" />
+          </form>
         </div>
         <div className="header_action">
           <div className="header_icon">
@@ -57,12 +63,16 @@ function Header() {
             <div className="header_count">1</div>
           </div>
           <div className="header_icon">
-            <AddShoppingCartIcon fontSize="large" />
-            <div className="header_count">1</div>
+            <Link to="my-cart">
+              <AddShoppingCartIcon fontSize="large" />
+              <div className="header_count">1</div>
+            </Link>
           </div>
           <div>
             <Link to="/my-profile">
-              <AccountCircleOutlinedIcon fontSize="large" />
+              {
+                user ? <img src={user.profile_picture} alt="avatar" className="header_avatar" /> : <AccountCircleOutlinedIcon fontSize="large" />
+              }
             </Link>
           </div>
         </div>
@@ -73,7 +83,14 @@ function Header() {
           <div>Shop By Department</div>
         </div>
         <div className="header_nav-right">
-          <div className="header_nav">Seller Center</div>
+          <div className="header_nav">
+            <Link to={!user.shop_id ? '/seller-center'
+              : user?.shop_account_status === 3 ? '/my-shop'
+                : '/shop/create'}
+            >
+              Seller Center
+            </Link>
+          </div>
           <div className="header_i18n header_nav">
             <div className="header_lang">
               <img

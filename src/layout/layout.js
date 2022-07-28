@@ -18,7 +18,7 @@ function Layout({ children }) {
 
   useEffect(() => {
     dispatch(fetchUserInfo());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div>
