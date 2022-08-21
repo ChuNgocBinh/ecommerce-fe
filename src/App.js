@@ -48,6 +48,7 @@ function App() {
         {/* <Route element={<PrivateRouter />}> */}
         {renderPrivateRoute()}
         {/* </Route> */}
+        {/* </Route> */}
       </Routes>
     </Layout>
   );
