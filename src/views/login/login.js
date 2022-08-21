@@ -1,5 +1,5 @@
 import { Button, TextField } from '@mui/material';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
@@ -9,19 +9,15 @@ import { loginUser } from 'services/user';
 // import { auth } from 'firebase/firebase-config';
 // import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import './login.sass';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import auth from 'fb/firebase-config';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const SITE_KEY = '6LdCoVohAAAAAJumNjc4CSnpwjqzV6NOYYPVSH9q';
 
 function Login() {
-  const [avatar, setAvatar] = useState('/image/upload.svg');
-  const [fileUpload, setFileUpload] = useState();
-  const [stepSetting, setStepSetting] = useState(1);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const schema = yup.object({
-  //   shop_name: yup.string().required(),
-  //   phone_number: yup.number().required(),
-  // }).required();
 
   const { control, handleSubmit } = useForm();
 
@@ -39,6 +35,35 @@ function Login() {
     }
   };
 
+  const provider = new GoogleAuthProvider();
+
+  const click = () => {
+    console.log('vao day');
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        console.log(credential);
+        const token = credential.accessToken;
+        const { user } = result;
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const { email } = error.customData;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+      });
+  };
+
+  const recaptchaRef = React.useRef();
+  const onChange = async () => {
+    const token = await recaptchaRef.current.executeAsync();
+    console.log(token);
+  };
+
+  const onRecapcha = async () => {
+    const token = await recaptchaRef.current.executeAsync();
+    console.log(token);
+  };
   return (
     <div className="login_container">
       <div className="login_box">
@@ -87,6 +112,16 @@ function Login() {
             <Link to="/sign-up"><FormattedMessage id="user.button.register" /></Link>
           </div>
         </form>
+        <ReCAPTCHA
+          // ref={recaptchaRef}
+          // size="invisible"
+          sitekey={SITE_KEY}
+        />
+        ,
+        <button onClick={click}>login gg</button>
+        ,
+        <button onClick={onRecapcha}>recapcha</button>
+
       </div>
     </div>
 
