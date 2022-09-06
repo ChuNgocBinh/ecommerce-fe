@@ -9,6 +9,7 @@ import GuestRouter from 'router/guest_router';
 import PrivateRouter from 'router/private_router';
 
 function App() {
+  console.log('hi');
   const renderPublicRoute = () => {
     const xhtml = publicRoute.map((route) => (
       <Route path={route.path} element={route.component} key={route.path} />
