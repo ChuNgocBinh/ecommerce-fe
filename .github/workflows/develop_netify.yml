@@ -3,7 +3,7 @@ name: Development workflow
 
 # When workflow is triggered
 on:
-  pull_request:
+  push:
     branches:
       - master
 
