@@ -12,6 +12,8 @@ import './login.sass';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import auth from 'fb/firebase-config';
 import ReCAPTCHA from 'react-google-recaptcha';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GoogleIcon from '@mui/icons-material/Google';
 
 const SITE_KEY = '6LdCoVohAAAAAJumNjc4CSnpwjqzV6NOYYPVSH9q';
 
@@ -37,7 +39,7 @@ function Login() {
 
   const provider = new GoogleAuthProvider();
 
-  const click = () => {
+  const onConnectGG = () => {
     console.log('vao day');
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -113,14 +115,52 @@ function Login() {
           </div>
         </form>
         <ReCAPTCHA
-          // ref={recaptchaRef}
-          // size="invisible"
+          ref={recaptchaRef}
+          size="invisible"
           sitekey={SITE_KEY}
         />
-        ,
-        <button onClick={click}>login gg</button>
-        ,
-        <button onClick={onRecapcha}>recapcha</button>
+        <div>
+          <div className="login_social-title">Login with Firebase</div>
+          <div className="login_social-box">
+            <button
+              className="login_social login_gg"
+              onClick={onConnectGG}
+            // aria-hidden="true"
+            >
+              <GoogleIcon />
+            </button>
+            <button
+              onClick="#"
+              className="login_social login_fb"
+            // aria-hidden="true"
+            >
+              <FacebookIcon />
+            </button>
+          </div>
+
+        </div>
+        <div>
+          <div className="login_social-title">Login with SSO</div>
+          <div className="login_social-box">
+            <button
+              onClick="#"
+              className="login_social login_gg"
+            // aria-hidden="true"
+            >
+              <GoogleIcon />
+            </button>
+            <button
+              onClick="#"
+              className="login_social login_fb"
+            // aria-hidden="true"
+            >
+              <FacebookIcon />
+            </button>
+          </div>
+
+        </div>
+
+        {/* <button onClick={onRecapcha}>recapcha</button> */}
 
       </div>
     </div>
