@@ -30,3 +30,11 @@ export function editUser(data) {
     data,
   });
 }
+
+export function loginGoogleSSO(data) {
+  return request({
+    url: '/auth/login-gg-sso',
+    method: 'POST',
+    data,
+  });
+}

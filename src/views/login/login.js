@@ -1,15 +1,15 @@
 import { Button, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { changeUserInfo } from 'redux/appSLice';
-import { loginUser } from 'services/user';
+import { loginGoogleSSO, loginUser } from 'services/user';
 // import { auth } from 'firebase/firebase-config';
 // import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import './login.sass';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
 import auth from 'fb/firebase-config';
 import ReCAPTCHA from 'react-google-recaptcha';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -22,6 +22,7 @@ function Login() {
   const navigate = useNavigate();
 
   const { control, handleSubmit } = useForm();
+  const recaptchaRef = useRef();
 
   const onSubmit = async (data) => {
     try {
@@ -37,35 +38,31 @@ function Login() {
     }
   };
 
+  const generateRecapchaToken = async () => {
+    const recapchaToken = await recaptchaRef.current.executeAsync();
+    return recapchaToken;
+  };
+
   const provider = new GoogleAuthProvider();
 
-  const onConnectGG = () => {
-    console.log('vao day');
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result);
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        console.log(credential);
-        const token = credential.accessToken;
-        const { user } = result;
-      }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const { email } = error.customData;
-        const credential = GoogleAuthProvider.credentialFromError(error);
+  const onConnectGG = async () => {
+    try {
+      const recapchaToken = await generateRecapchaToken();
+      await signInWithPopup(auth, provider);
+      const tokenAuth = await auth.currentUser.getIdToken();
+      const resLogin = await loginGoogleSSO({
+        idToken: tokenAuth,
+        recapchaToken,
       });
+      console.log(resLogin);
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const { email } = error.customData;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    }
   };
 
-  const recaptchaRef = React.useRef();
-  const onChange = async () => {
-    const token = await recaptchaRef.current.executeAsync();
-    console.log(token);
-  };
-
-  const onRecapcha = async () => {
-    const token = await recaptchaRef.current.executeAsync();
-    console.log(token);
-  };
   return (
     <div className="login_container">
       <div className="login_box">
