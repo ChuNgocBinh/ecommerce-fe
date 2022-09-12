@@ -14,6 +14,7 @@ import auth from 'fb/firebase-config';
 import ReCAPTCHA from 'react-google-recaptcha';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
+import GoogleLogin from 'react-google-login';
 
 const SITE_KEY = '6LdCoVohAAAAAJumNjc4CSnpwjqzV6NOYYPVSH9q';
 
@@ -62,6 +63,10 @@ function Login() {
       const credential = GoogleAuthProvider.credentialFromError(error);
     }
   };
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  }
 
   return (
     <div className="login_container">
@@ -156,7 +161,13 @@ function Login() {
           </div>
 
         </div>
-
+        <GoogleLogin
+          clientId="981857632593-kmccm4bm4m4vkt98v1huegm85rnab327.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+        // cookiePolicy={'single_host_origin'}
+        />
         {/* <button onClick={onRecapcha}>recapcha</button> */}
 
       </div>
