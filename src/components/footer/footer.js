@@ -30,31 +30,31 @@ function Footer() {
           </div>
           <div className="widget_content">
             <h4 className="widget-title-2">Quick links</h4>
-            <ui className="ps-list--social">
+            <ul className="ps-list--social">
               <li>Policy</li>
               <li>Term & Condition </li>
               <li>Shipping</li>
               <li>Return</li>
               <li>FAQs</li>
-            </ui>
+            </ul>
           </div>
           <div className="widget widget_footer">
             <h4 className="widget-title-3">Company</h4>
-            <ui className="ps-list--link-3">
+            <ul className="ps-list--link-3">
               <li>About</li>
               <li>Affilate</li>
               <li>Career</li>
               <li>Contact</li>
-            </ui>
+            </ul>
           </div>
           <div className="widget widget_footer">
             <h4 className="widget-title-4">Bussiness</h4>
-            <ui className="ps-list--link-4">
+            <ul className="ps-list--link-4">
               <li>Our Press</li>
               <li>Checkout</li>
               <li>My account</li>
               <li>Shop</li>
-            </ui>
+            </ul>
           </div>
         </div>
       </footer>

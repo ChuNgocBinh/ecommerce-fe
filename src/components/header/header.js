@@ -37,7 +37,6 @@ function Header() {
   };
 
   const user = useAuth();
-  console.log(user);
 
   return (
     <div className="header_container">
@@ -56,8 +55,10 @@ function Header() {
         </div>
         <div className="header_action">
           <div className="header_icon">
-            <ForumOutlinedIcon fontSize="large" />
-            <div className="header_count">1</div>
+            <Link to="/message/123">
+              <ForumOutlinedIcon fontSize="large" />
+              <div className="header_count">1</div>
+            </Link>
           </div>
           <div className="header_icon">
             <NotificationsActiveOutlinedIcon fontSize="large" />

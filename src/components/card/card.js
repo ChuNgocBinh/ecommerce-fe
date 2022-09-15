@@ -3,7 +3,6 @@ import ReactStars from 'react-stars';
 import './card.sass';
 
 function Card({ data }) {
-  console.log(data);
   return (
     <div className="card_container">
       <div className="card_picture">

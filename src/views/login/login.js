@@ -14,7 +14,7 @@ import auth from 'fb/firebase-config';
 import ReCAPTCHA from 'react-google-recaptcha';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
-import GoogleLogin from 'react-google-login';
+import GoogleLogin, { useGoogleLogin } from 'react-google-login';
 
 const SITE_KEY = '6LdCoVohAAAAAJumNjc4CSnpwjqzV6NOYYPVSH9q';
 
@@ -54,19 +54,33 @@ function Login() {
       const resLogin = await loginGoogleSSO({
         idToken: tokenAuth,
         recapchaToken,
+        rule: 'firebase',
       });
-      console.log(resLogin);
+
+      if (resLogin.status === 200) {
+        localStorage.setItem('AuthToken', JSON.stringify(`Bearer ${resLogin?.data?.token}`));
+        dispatch(changeUserInfo(resLogin?.data?.data));
+        navigate('/');
+      }
     } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const { email } = error.customData;
-      const credential = GoogleAuthProvider.credentialFromError(error);
+      console.log(error);
     }
   };
 
-  const responseGoogle = (response) => {
-    console.log(response);
-  }
+  const onSuccess = (res) => {
+    console.log(res);
+  };
+  const onFailure = (res) => {
+    console.log(res);
+  };
+  const clientId = process.env.GOOGLE_CLIENT_ID;
+  const { signIn } = useGoogleLogin({
+    onSuccess,
+    clientId,
+    isSignedIn: true,
+    onFailure,
+    accessType: 'offline',
+  });
 
   return (
     <div className="login_container">
@@ -132,7 +146,7 @@ function Login() {
               <GoogleIcon />
             </button>
             <button
-              onClick="#"
+              // onClick="#"
               className="login_social login_fb"
             // aria-hidden="true"
             >
@@ -145,14 +159,14 @@ function Login() {
           <div className="login_social-title">Login with SSO</div>
           <div className="login_social-box">
             <button
-              onClick="#"
+              onClick={signIn}
               className="login_social login_gg"
             // aria-hidden="true"
             >
               <GoogleIcon />
             </button>
             <button
-              onClick="#"
+              // onClick="#"
               className="login_social login_fb"
             // aria-hidden="true"
             >
@@ -161,13 +175,13 @@ function Login() {
           </div>
 
         </div>
-        <GoogleLogin
+        {/* <GoogleLogin
           clientId="981857632593-kmccm4bm4m4vkt98v1huegm85rnab327.apps.googleusercontent.com"
           buttonText="Login"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
-        // cookiePolicy={'single_host_origin'}
-        />
+          cookiePolicy="single_host_origin"
+        /> */}
         {/* <button onClick={onRecapcha}>recapcha</button> */}
 
       </div>

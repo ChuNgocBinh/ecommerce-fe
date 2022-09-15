@@ -97,12 +97,12 @@ function MyProfile() {
               </b>
             </p>
             <p className="content_row">
-Mật khẩu:
+              Mật khẩu:
               {' '}
               <b>**********</b>
             </p>
             <p className="content_row">
-Email:
+              Email:
               {' '}
               <b>
                 {profile?.email}
@@ -116,7 +116,7 @@ Email:
               </b>
             </p>
             <p className="content_row">
-Địa chỉ:
+              Địa chỉ:
               {' '}
               <b>
                 {profile?.address}

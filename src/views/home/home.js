@@ -23,7 +23,6 @@ function Home() {
     try {
       const res = await getListProduct();
       if (res.status === 200 && res?.data?.status === 'success') {
-        console.log(res);
         setProducts(res?.data?.data);
       }
     } catch (error) {

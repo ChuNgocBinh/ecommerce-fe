@@ -8,6 +8,7 @@ const path = {
   myShop: '/my-shop',
   myCart: '/my-cart',
   myProfile: '/my-profile',
+  message: '/message/:message_id',
 };
 
 export const subPathMyShop = {

@@ -15,11 +15,11 @@ function Layout({ children }) {
   const locale = useSelector((state) => state.app.locale);
   const loading = useSelector((state) => state.app.loading);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchUserInfo());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchUserInfo());
+  // }, [dispatch]);
 
   return (
     <div>

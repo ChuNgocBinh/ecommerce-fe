@@ -13,12 +13,10 @@ import MyProfile from 'views/accountUser/myProfile';
 import ListMyProductAccept from 'views/my-shop/listProductWaiting/listProductAccept';
 
 const publicRoute = [
-  { component: <Home />, path: path.default },
   { component: <Login />, path: path.login },
   { component: <Register />, path: path.signup },
-  { component: <DetailProduct />, path: path.detail },
+
   // { component: <Shop />, path: path.sellerCenter },
-  { component: <CreateShop />, path: path.createShop },
   // { component: <MyShop />, path: path.myShop },
   // { component: <MyCart />, path: path.myCart },1
 ];
