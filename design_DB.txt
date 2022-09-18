@@ -1,0 +1,135 @@
+// table users
+CREATE TABLE users
+	(
+		id           int NOT NULL PRIMARY KEY AUTO_INCREMENT
+	  , user_name    varchar(45) NOT NULL
+	  , email        varchar(45) NOT NULL UNIQUE
+	  , password     varchar(100) NOT NULL
+	  , phone_number varchar(45) UNIQUE
+	  , address      varchar(100)
+	  , access_token varchar(100)
+	  , isActive     int Default 0
+	  , createdAt    timestamp
+	  , updateAt     timestamp
+	)
+;
+
+// table users_admin
+CREATE TABLE users_admin
+	(
+		id        int NOT NULL PRIMARY KEY AUTO_INCREMENT
+	  , user_name varchar(45) NOT NULL
+	  , email     varchar(45) NOT NULL UNIQUE
+	  , password  varchar(100) NOT NULL
+	  , rule      varchar(45) Default 'root'
+	  , createdAt timestamp
+	  , updateAt  timestamp
+	)
+;
+
+// table detail product
+CREATE TABLE users_admin
+	(
+		id           int NOT NULL PRIMARY KEY AUTO_INCREMENT
+	  , product_name varchar(45) NOT NULL
+	  , created_by   int NOT NULL
+	  , cost         int NOT NULL
+	  , discount     int
+	  , image        varchar(45)
+	  , description  varchar(250)
+	  , brand        int
+	  , amount       int
+	  , createdAt    timestamp
+	  , updateAt     timestamp
+	)
+;
+
+// table detail product
+CREATE TABLE shop_account
+	(
+		id              int NOT NULL PRIMARY KEY AUTO_INCREMENT
+	  , shop_name       varchar(45) NOT NULL
+	  , user_id         int NOT NULL
+	  , profile_picture varchar(100) NOT NULL
+	  , phone_number    int
+	  , email           varchar(45)
+	  , country         varchar(250)
+	  , province        int
+	  , city            int
+	  , zip_code        int
+	  , description     varchar(250)
+	  , createdAt       timestamp
+	  , updateAt        timestamp
+	)
+;
+
+// table detail product
+CREATE TABLE product_item
+	(
+		id           int NOT NULL PRIMARY KEY AUTO_INCREMENT
+	  , product_name varchar(45) NOT NULL
+	  , shop_id      int NOT NULL
+	  , brand        varchar(100) NOT NULL
+	  , cost         int NOT NULL
+	  , discount     int NOT NULL
+	  , description  varchar(250)
+	  , detail       varchar(250)
+	  , quantity     int NOT NULL
+	  , isAccept     int Default 0
+	  , createdAt    timestamp
+	  , updateAt     timestamp
+	)
+;
+
+// table detail product
+CREATE TABLE product_item
+	(
+		id           int NOT NULL PRIMARY KEY AUTO_INCREMENT
+	  , product_name varchar(45) NOT NULL
+	  , shop_id      int NOT NULL
+	  , brand        varchar(100) NOT NULL
+	  , cost         int NOT NULL
+	  , discount     int NOT NULL
+	  , description  varchar(250)
+	  , detail       varchar(250)
+	  , quantity     int NOT NULL
+	  , isAccept     int Default 0
+	  , createdAt    timestamp
+	  , updateAt     timestamp
+	)
+;
+
+// table conversation
+CREATE TABLE conversation
+	(
+		id                	int NOT NULL PRIMARY KEY AUTO_INCREMENT , 
+		title          		varchar(100) NOT NULL , 
+		create_by          	int NOT NULL , 
+		createdAt         	timestamp default CURRENT_TIMESTAMP ,
+		updateAt          	timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+	)
+;
+
+// table participants
+CREATE TABLE participants
+	(
+		id                	int NOT NULL PRIMARY KEY AUTO_INCREMENT , 
+		conversation_id     int NOT NULL , 
+		user_id          	int NOT NULL , 
+		createdAt         	timestamp default CURRENT_TIMESTAMP ,
+		updateAt          	timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+	)
+;
+
+// table messages
+CREATE TABLE messages
+	(
+		id                	int NOT NULL PRIMARY KEY AUTO_INCREMENT , 
+		conversation_id     int NOT NULL , 
+		sender_id          	int NOT NULL , 
+		content          	varchar(255) NOT NULL ,
+		replay				int NOT NULL , 
+		createdAt         	timestamp default CURRENT_TIMESTAMP ,
+		updateAt          	timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+	)
+;
