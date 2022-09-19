@@ -12,7 +12,7 @@ export const fetchUserInfo = createAsyncThunk(
   'users/fetchUserInfo',
   // eslint-disable-next-line consistent-return
   async () => {
-    const token = JSON.parse(localStorage.getItem('AuthToken'));
+    const token = localStorage.getItem('AuthToken');
     if (!token) {
       return null;
     }

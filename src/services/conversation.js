@@ -10,3 +10,14 @@ export function getConversations(page, page_size) {
     },
   });
 }
+
+export function getMessages(id, page, page_size) {
+  return request({
+    url: `/message/${id}`,
+    method: 'GET',
+    params: {
+      page,
+      page_size,
+    },
+  });
+}

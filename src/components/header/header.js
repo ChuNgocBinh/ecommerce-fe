@@ -55,7 +55,7 @@ function Header() {
         </div>
         <div className="header_action">
           <div className="header_icon">
-            <Link to="/message/123">
+            <Link to="/message/1">
               <ForumOutlinedIcon fontSize="large" />
               <div className="header_count">1</div>
             </Link>
