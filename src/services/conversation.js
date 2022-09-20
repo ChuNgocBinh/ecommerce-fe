@@ -21,3 +21,11 @@ export function getMessages(id, page, page_size) {
     },
   });
 }
+
+export function createMessage(cvs_id, data) {
+  return request({
+    url: `/message/create-message/${cvs_id}`,
+    method: 'POST',
+    data,
+  });
+}

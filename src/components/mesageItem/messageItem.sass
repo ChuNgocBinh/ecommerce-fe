@@ -1,0 +1,30 @@
+@use '../../styles/helpers'
+
+.messageItem_container--other
+  display: flex
+  align-items: center
+  margin-bottom: 10px
+
+.messageItem_container--me
+  display: flex
+  flex-direction: row-reverse
+  align-items: center
+  justify-content: flex-start
+  margin-bottom: 10px
+
+.messageItem_content--me
+  background-color: helpers.$main-color
+  padding: 10px
+  border-radius: 10px
+
+.messageItem_content--other
+  background-color: #ccc
+  padding: 10px
+  border-radius: 10px
+
+.messageItem_avatar
+  width: 40px
+  height: 40px
+  border-radius: 50%
+  object-fit: cover
+  margin: 0 10px

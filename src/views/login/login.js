@@ -29,7 +29,7 @@ function Login() {
     try {
       const res = await loginUser(data);
       if (res.status === 200) {
-        localStorage.setItem('AuthToken', JSON.stringify(`Bearer ${res?.data?.token}`));
+        localStorage.setItem('AuthToken', `Bearer ${res?.data?.token}`);
         dispatch(changeUserInfo(res?.data?.data));
         navigate('/');
       }
@@ -57,7 +57,7 @@ function Login() {
       });
 
       if (resLogin.status === 200) {
-        localStorage.setItem('AuthToken', JSON.stringify(`Bearer ${resLogin?.data?.token}`));
+        localStorage.setItem('AuthToken', `Bearer ${resLogin?.data?.token}`);
         dispatch(changeUserInfo(resLogin?.data?.data));
         navigate('/');
       }
