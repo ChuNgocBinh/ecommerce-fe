@@ -9,9 +9,15 @@ import GuestRouter from 'router/guest_router';
 import PrivateRouter from 'router/private_router';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo } from 'redux/appSLice';
+import { io } from 'socket.io-client';
 
 function App() {
+  // const socket = io('http://localhost:8080');
+  // socket.on('mess', (data) => {
+  //   console.log(data);
+  // });
   const dispatch = useDispatch();
+  const status = useSelector((state) => state.app.status);
 
   useEffect(() => {
     dispatch(fetchUserInfo());
@@ -23,7 +29,7 @@ function App() {
     ));
     return xhtml;
   };
-
+  console.log('render');
   const renderPrivateRoute = () => {
     const xhtml = privateRoute.map((route) => {
       if (route.path === '/my-shop') {
@@ -46,6 +52,10 @@ function App() {
     });
     return xhtml;
   };
+
+  if (status === 'error') return <div>Error....</div>;
+
+  if (status === 'loading') return <div>Loading....</div>;
 
   return (
     <Layout>

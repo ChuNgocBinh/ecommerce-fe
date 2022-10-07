@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { getProductById } from 'services/product';
 import Comment from './comment/comment';
@@ -23,9 +24,17 @@ function DetailProduct() {
     }
   };
 
+  const fetchProductQuery = async () => {
+    const res = await getProductById(product_id);
+    return (res?.data?.data);
+  };
+
   useEffect(() => {
     fetchProduct();
   }, [product_id]);
+  console.log('render');
+  const query = useQuery(['products'], fetchProductQuery);
+  console.log('query', query);
 
   const cm = [
     {
@@ -49,7 +58,7 @@ function DetailProduct() {
   return (
     <div className="detail_container">
       <div className="detail_info">
-        <DetailInfo product={product} />
+        <DetailInfo product={query.data} />
       </div>
       <div>
         <ShopDetail />

@@ -6,6 +6,7 @@ const initialState = {
   locale: 'vi',
   loading: false,
   myShop: '',
+  status: 'idle',
 };
 
 export const fetchUserInfo = createAsyncThunk(
