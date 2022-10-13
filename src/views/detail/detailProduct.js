@@ -12,29 +12,39 @@ function DetailProduct() {
   const { product_id } = useParams();
   const [product, setProduct] = useState('');
 
-  const fetchProduct = async () => {
-    try {
-      const res = await getProductById(product_id);
+  // const fetchProduct = async () => {
+  //   try {
+  //     const res = await getProductById(product_id);
 
-      if (res?.status === 200 && res?.data?.status === 'success') {
-        setProduct(res?.data?.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     if (res?.status === 200 && res?.data?.status === 'success') {
+  //       setProduct(res?.data?.data);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const fetchProductQuery = async () => {
     const res = await getProductById(product_id);
     return (res?.data?.data);
   };
 
-  useEffect(() => {
-    fetchProduct();
-  }, [product_id]);
-  console.log('render');
-  const query = useQuery(['products'], fetchProductQuery);
-  console.log('query', query);
+  // useEffect(() => {
+  //   fetchProduct();
+  // }, [product_id]);
+  const query = useQuery(['products'], fetchProductQuery, {
+    cacheTime: 5000,
+  });
+
+  // const {
+  //   data, isFetching, isLoading, error, isError,
+  // } = query;
+  // console.log('data', data);
+  // console.log('isFetching', isFetching);
+  // console.log('isLoading', isLoading);
+  // console.log('error', error);
+  // console.log('isError', isError);
+  // console.log('query', query);
 
   const cm = [
     {

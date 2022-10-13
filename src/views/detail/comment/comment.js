@@ -13,7 +13,6 @@ function Comment({ cm }) {
   const [value, setValue] = useState('');
   const [comments, setListComments] = useState([]);
   const { product_id } = useParams();
-  console.log(user);
   const handleClickCmt = async () => {
     try {
       const data = {
@@ -29,15 +28,15 @@ function Comment({ cm }) {
     }
   };
 
-  const getListComment = async () => {
-    const res = await getListCommentByProductId(product_id);
-    console.log(res);
-    setListComments(res?.data?.data);
-  };
+  // const getListComment = async () => {
+  //   const res = await getListCommentByProductId(product_id);
+  //   console.log(res);
+  //   setListComments(res?.data?.data);
+  // };
 
-  useEffect(() => {
-    getListComment();
-  }, []);
+  // useEffect(() => {
+  //   getListComment();
+  // }, []);
 
   return (
     <div className="comment_container">
