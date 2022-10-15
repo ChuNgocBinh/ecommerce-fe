@@ -4,8 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 function GuestRouter() {
   const user = useAuth();
-  const isMember = !!user;
-  return !isMember ? <Outlet /> : <Navigate to="/" />;
+  return !user ? <Outlet /> : <Navigate to="/" />;
 }
 
 export default GuestRouter;

@@ -11,10 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo } from 'redux/appSLice';
 import { io } from 'socket.io-client';
 
-// const socket = io('http://localhost:8080');
-// socket.on('mess', (data) => {
-//   console.log(data);
-// });
+const socket = io('http://localhost:8080');
+
 function App() {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.app.status);
@@ -52,21 +50,26 @@ function App() {
     return xhtml;
   };
 
-  // if (status === 'error') return <div>Error....</div>;
+  if (status === 'error') return <div>Error....</div>;
 
-  // if (status === 'loading') return <div>Loading....</div>;
+  if (status === 'loading') return <div>Loading....</div>;
 
   return (
     <Layout>
-      <Routes>
-        <Route element={<GuestRouter />}>
-          {renderPublicRoute()}
-        </Route>
-        <Route element={<PrivateRouter />}>
-          {renderPrivateRoute()}
-        </Route>
-        {/* </Route> */}
-      </Routes>
+      {
+        status === 'done' && (
+          <Routes>
+            <Route element={<PrivateRouter />}>
+              {renderPrivateRoute()}
+            </Route>
+            <Route element={<GuestRouter />}>
+              {renderPublicRoute()}
+            </Route>
+            {/* </Route> */}
+          </Routes>
+        )
+      }
+
     </Layout>
   );
 }

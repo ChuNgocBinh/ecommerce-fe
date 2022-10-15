@@ -1,12 +1,12 @@
 import { useAuth } from 'hook/useAuth';
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import Login from 'views/login/login';
 
 function PrivateRouter() {
+  console.log('vao day');
   const user = useAuth();
-  const isMember = !!user;
-  return isMember ? <Outlet /> : <Navigate to="/login" />;
+  console.log(user);
+  return user ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default PrivateRouter;

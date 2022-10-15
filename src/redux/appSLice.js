@@ -13,15 +13,18 @@ export const fetchUserInfo = createAsyncThunk(
   'users/fetchUserInfo',
   // eslint-disable-next-line consistent-return
   async () => {
-    const token = localStorage.getItem('AuthToken');
-    if (!token) {
+    try {
+      const token = localStorage.getItem('AuthToken');
+      if (!token) {
+        return null;
+      }
+      const res = await getMe();
+      if (res.status === 200 && res?.data?.status === 'success') {
+        return res?.data?.data;
+      }
+    } catch (error) {
       return null;
     }
-    const res = await getMe();
-    if (res.status === 200 && res?.data?.status === 'success') {
-      return res?.data?.data;
-    }
-    return null;
   },
 );
 

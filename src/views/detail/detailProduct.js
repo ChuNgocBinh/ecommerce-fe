@@ -32,9 +32,7 @@ function DetailProduct() {
   // useEffect(() => {
   //   fetchProduct();
   // }, [product_id]);
-  const query = useQuery(['products'], fetchProductQuery, {
-    cacheTime: 5000,
-  });
+  const query = useQuery(['products'], fetchProductQuery);
 
   // const {
   //   data, isFetching, isLoading, error, isError,

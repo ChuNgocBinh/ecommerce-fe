@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import Card from 'components/card/card';
 import React, { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
@@ -29,6 +30,13 @@ function Home() {
       console.log(error);
     }
   };
+  // const getProducts = async () => {
+  //   const res = await getListProduct();
+  //   return res?.data?.data;
+  // };
+
+  // const query = useQuery(['list-product'], getProducts);
+  // console.log(query);
 
   useEffect(() => {
     getProducts();
