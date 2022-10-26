@@ -70,7 +70,7 @@ function Login() {
   const onFailure = (res) => {
     console.log(res);
   };
-  const clientId = process.env.GOOGLE_CLIENT_ID;
+  const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
   const { signIn } = useGoogleLogin({
     onSuccess,
     clientId,
@@ -78,6 +78,9 @@ function Login() {
     onFailure,
     accessType: 'offline',
   });
+
+  console.log(process.env.REACT_APP_SITE_KEY);
+  console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID);
 
   return (
     <div className="login_container">
@@ -130,7 +133,7 @@ function Login() {
         <ReCAPTCHA
           ref={recaptchaRef}
           size="invisible"
-          sitekey={process.env.SITE_KEY}
+          sitekey={process.env.REACT_APP_SITE_KEY}
         />
         <div>
           <div className="login_social-title">Login with Firebase</div>
