@@ -16,8 +16,6 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import GoogleLogin, { useGoogleLogin } from 'react-google-login';
 
-const SITE_KEY = '6LdCoVohAAAAAJumNjc4CSnpwjqzV6NOYYPVSH9q';
-
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -132,7 +130,7 @@ function Login() {
         <ReCAPTCHA
           ref={recaptchaRef}
           size="invisible"
-          sitekey={SITE_KEY}
+          sitekey={process.env.SITE_KEY}
         />
         <div>
           <div className="login_social-title">Login with Firebase</div>
