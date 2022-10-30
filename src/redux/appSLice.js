@@ -44,6 +44,12 @@ export const appSlice = createSlice({
     changeShopInfo: (state, action) => {
       state.myShop = action.payload;
     },
+    logout: (state) => {
+      state.user = '';
+    },
+    serverError: (state) => {
+      state.status = 'error';
+    },
   },
   extraReducers: {
     [fetchUserInfo.pending]: (state) => {
@@ -59,6 +65,6 @@ export const appSlice = createSlice({
   },
 });
 export const {
-  changeLocale, changeLoading, changeUserInfo, changeShopInfo,
+  changeLocale, changeLoading, changeUserInfo, changeShopInfo, logout, serverError,
 } = appSlice.actions;
 export default appSlice.reducer;

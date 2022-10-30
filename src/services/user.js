@@ -38,3 +38,14 @@ export function loginGoogleSSO(data) {
     data,
   });
 }
+
+export function refreshToken() {
+  const token = localStorage.getItem('refreshToken');
+  return request({
+    url: '/auth/refresh-token',
+    method: 'POST',
+    data: {
+      refresh_token: token,
+    },
+  });
+}

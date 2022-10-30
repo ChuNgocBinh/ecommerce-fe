@@ -15,6 +15,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import GoogleLogin, { useGoogleLogin } from 'react-google-login';
+import { setLocalStorage } from 'utils/setLocalStorage';
 
 function Login() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function Login() {
     try {
       const res = await loginUser(data);
       if (res.status === 200) {
-        localStorage.setItem('AuthToken', `Bearer ${res?.data?.token}`);
+        setLocalStorage(res?.data?.token, res?.data?.refreshToken);
         dispatch(changeUserInfo(res?.data?.data));
         navigate('/');
       }
@@ -55,7 +56,7 @@ function Login() {
       });
 
       if (resLogin.status === 200) {
-        localStorage.setItem('AuthToken', `Bearer ${resLogin?.data?.token}`);
+        setLocalStorage(resLogin?.data?.token, resLogin?.data?.refresh_token);
         dispatch(changeUserInfo(resLogin?.data?.data));
         navigate('/');
       }
@@ -78,9 +79,6 @@ function Login() {
     onFailure,
     accessType: 'offline',
   });
-
-  console.log(process.env.REACT_APP_SITE_KEY);
-  console.log(process.env.REACT_APP_GOOGLE_CLIENT_ID);
 
   return (
     <div className="login_container">

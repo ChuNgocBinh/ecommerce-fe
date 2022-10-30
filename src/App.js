@@ -8,8 +8,9 @@ import privateRoute, { subRouterMyShop } from 'constant/privateRouter';
 import GuestRouter from 'router/guest_router';
 import PrivateRouter from 'router/private_router';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserInfo } from 'redux/appSLice';
+import { fetchUserInfo, logout, serverError } from 'redux/appSLice';
 import { io } from 'socket.io-client';
+import _emitter from 'utils/emitter';
 
 const socket = io('http://localhost:8080');
 
@@ -19,6 +20,14 @@ function App() {
   useEffect(() => {
     dispatch(fetchUserInfo());
   }, []);
+
+  _emitter.on('expire', () => {
+    dispatch(logout());
+  });
+
+  _emitter.on('error', () => {
+    dispatch(serverError());
+  });
 
   const renderPublicRoute = () => {
     const xhtml = publicRoute.map((route) => (
