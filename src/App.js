@@ -12,7 +12,7 @@ import { fetchUserInfo, logout, serverError } from 'redux/appSLice';
 import { io } from 'socket.io-client';
 import _emitter from 'utils/emitter';
 
-const socket = io('http://localhost:8080');
+const socket = io(process.env.REACT_APP_SOCKET_URL);
 
 function App() {
   const dispatch = useDispatch();
