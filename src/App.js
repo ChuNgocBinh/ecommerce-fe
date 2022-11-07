@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo, logout, serverError } from 'redux/appSLice';
 import { io } from 'socket.io-client';
 import _emitter from 'utils/emitter';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const socket = io(process.env.REACT_APP_SOCKET_URL);
 

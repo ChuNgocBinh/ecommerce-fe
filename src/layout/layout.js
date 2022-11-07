@@ -10,6 +10,7 @@ import { NotificationContainer } from 'react-notifications';
 import { fetchUserInfo } from 'redux/appSLice';
 import 'react-notifications/lib/notifications.css';
 import Footer from 'components/footer/footer';
+import Chats from 'views/chats/chats';
 
 function Layout({ children }) {
   const locale = useSelector((state) => state.app.locale);
@@ -22,7 +23,7 @@ function Layout({ children }) {
   // }, [dispatch]);
 
   return (
-    <div>
+    <div className="layout_container">
       {loading && <Loader />}
       <IntlProvider messages={messages[locale]} locale={appLocale[locale]}>
         <div className="layout_header">
@@ -32,6 +33,7 @@ function Layout({ children }) {
         <div>
           <Footer />
         </div>
+        <Chats />
         <NotificationContainer />
       </IntlProvider>
     </div>

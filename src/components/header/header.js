@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { changeLocale } from 'redux/appSLice';
 import { Link } from 'react-router-dom';
 import { useAuth } from 'hook/useAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const langs = [
   {
@@ -61,12 +62,16 @@ function Header() {
             </Link>
           </div>
           <div className="header_icon">
-            <NotificationsActiveOutlinedIcon fontSize="large" />
+            <i className="fa-regular fa-bell fa-2xl" />
+            <div className="header_count">1</div>
+          </div>
+          <div className="header_icon">
+            <i className="fa-regular fa-heart fa-2xl" />
             <div className="header_count">1</div>
           </div>
           <div className="header_icon">
             <Link to="my-cart">
-              <AddShoppingCartIcon fontSize="large" />
+              <i className="fa-brands fa-opencart fa-2xl" />
               <div className="header_count">1</div>
             </Link>
           </div>
