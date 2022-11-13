@@ -52,7 +52,7 @@ function Layout({ children }) {
           visible && (
             <div className="layout_backtotop" onClick={scrollToTop}>
               <div className="layout_backtotop--icon">
-                <i className="fa-brands fa-autoprefixer" />
+                <i className="fa-solid fa-arrow-up" />
               </div>
             </div>
           )
