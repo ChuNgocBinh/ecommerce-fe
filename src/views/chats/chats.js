@@ -40,7 +40,6 @@ function Chats({ onShowMess }) {
   const handeSelectMessage = async (id) => {
     try {
       const messages = await getMessages(id, pageMess, pageSize);
-      console.log(messages);
       setCurrentCvs(id);
       setMessageGroup(messages?.data?.data);
     } catch (error) {
@@ -102,7 +101,7 @@ function Chats({ onShowMess }) {
             {
               conversations.map((el) => (
                 <div
-                  className="chat_list--item"
+                  className={cn({ 'chat_list--item': true, 'chat_list--item--active': currentCvs === el.conversation_id })}
                   onClick={() => handeSelectMessage(el.conversation_id)}
                   key={el.conversation_id}
                 >
@@ -131,7 +130,7 @@ function Chats({ onShowMess }) {
           <div>
             <form className="chat_content--form" onClick={handleSendMessage}>
               <input className="input" onChange={(e) => setTextMessage(e.target.value)} value={textMessage} />
-              <button>send</button>
+              <button><i className="fa-regular fa-paper-plane" /></button>
             </form>
           </div>
         </div>

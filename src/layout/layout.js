@@ -18,10 +18,24 @@ function Layout({ children }) {
   const locale = useSelector((state) => state.app.locale);
   const loading = useSelector((state) => state.app.loading);
   const user = useAuth();
-
+  const [visible, setVisible] = useState(false);
   const [showMess, setShowMess] = useState(false);
 
-  // window.onscroll();
+  window.onscroll = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 500) {
+      setVisible(true);
+    } else if (scrolled <= 500) {
+      setVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <div className="layout_container">
@@ -34,6 +48,13 @@ function Layout({ children }) {
         <div>
           <Footer />
         </div>
+        {
+          visible && (
+            <div className="layout_backtotop" onClick={scrollToTop}>
+              <i className="fa-brands fa-autoprefixer" />
+            </div>
+          )
+        }
         {
           user && (
             <div className="layout_chat">
