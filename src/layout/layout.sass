@@ -1,3 +1,5 @@
+@use '../styles/helpers'
+  
 .layout_header
   background-color: #fcb800
 
@@ -10,8 +12,17 @@
 
 .layout_chat
   position: fixed
-  bottom: 40px
-  right: 40px
+  bottom: 0
+  right: 50px
   // height: 500px
   // width: 400px
   // background: #fff
+
+.layout_chat--hide
+  padding: 10px 20px
+  background: helpers.$main-color
+  border-radius: 5px
+  cursor: pointer
+  font-size: 18px
+  .fa-comments
+    color: #fff

@@ -8,7 +8,7 @@ import { useNavigate, Outlet } from 'react-router-dom';
 import cn from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 
-function Chats() {
+function Chats({ onShowMess }) {
   const user = useAuth();
   const navigate = useNavigate();
   const sendRef = useRef();
@@ -94,7 +94,7 @@ function Chats() {
     <div className="chat_container">
       <div className="chat_title">
         <div className="chat_title--lable">Chats</div>
-        <div className="chat_title--cancel">X</div>
+        <div className="chat_title--cancel" onClick={() => onShowMess(false)}><i className="fa-solid fa-xmark" /></div>
       </div>
       <div className="chat_box">
         <div className="chat_list">

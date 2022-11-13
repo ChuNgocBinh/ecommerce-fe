@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useEffect, useState } from 'react';
 import Header from 'components/header/header';
 import './layout.sass';
 import { IntlProvider } from 'react-intl';
@@ -18,11 +19,9 @@ function Layout({ children }) {
   const loading = useSelector((state) => state.app.loading);
   const user = useAuth();
 
-  // const dispatch = useDispatch();
+  const [showMess, setShowMess] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(fetchUserInfo());
-  // }, [dispatch]);
+  // window.onscroll();
 
   return (
     <div className="layout_container">
@@ -38,7 +37,17 @@ function Layout({ children }) {
         {
           user && (
             <div className="layout_chat">
-              <Chats />
+              {
+                showMess ? (
+                  <Chats onShowMess={setShowMess} />
+                ) : (
+                  <div className="layout_chat--hide" onClick={() => setShowMess(true)}>
+                    <i className="fa-solid fa-comments" />
+                    {' '}
+                    Chat
+                  </div>
+                )
+              }
             </div>
           )
         }
