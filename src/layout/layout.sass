@@ -26,12 +26,21 @@
   font-size: 18px
   .fa-comments
     color: #fff
+
+@keyframes backtotop_button
+  0%
+    bottom: 0px
+    opacity: 0
+  100%
+    bottom: 100px
+    opacity: 1
+
    
 .layout_backtotop
   height: 40px
   width: 40px
   background-color: helpers.$main-color
-  border-radius: 5px
+  border-radius: 50%
   position: fixed
   bottom: 100px
   right: 0
@@ -40,6 +49,7 @@
   align-items: center
   font-size: 24px
   cursor: pointer
+  animation: backtotop_button 0.5s linear
   &:hover
     color: #fff
 
