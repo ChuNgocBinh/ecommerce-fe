@@ -1,2 +1,91 @@
-// .chat_container
-//   position: fixed
+@use '../../styles/helpers'
+
+.chat_container
+  height: 400px
+  width: 500px
+  background: #fff
+  border: 1px solid #dcdce0
+  box-shadow: 0 4px 20px 0 rgb(74 74 78 / 16%)
+  border-radius: 5px
+
+.chat_title
+  display: flex
+  justify-content: space-between
+  align-items: center
+  height: 40px
+  width: 100%
+  background-color: helpers.$main-color
+  border-top-left-radius: 5px
+  border-top-right-radius: 5px
+
+  .chat_title--lable
+    margin-left: 10px
+
+  .chat_title--cancel
+    margin-right: 10px
+
+.chat_box
+  display: flex
+  height: calc( 100% - 40px )
+
+.chat_list
+  width: 220px
+  height: 100%
+  border-right: 1px solid #ccc
+
+  .chat_list--group
+    margin: 5px 0
+
+.chat_list--item
+  padding: 10px 5px
+  &:hover
+    background-color: #ccc
+    cursor: pointer
+
+.chat_content
+  flex-grow: 1
+  // padding: 5px
+  display: flex
+  flex-direction: column
+  height: 100%
+  // overflow: auto
+  .chat_content--group
+    flex-grow: 1
+    overflow: auto
+    display: flex
+    flex-direction: column-reverse
+
+.chat_content--avatar
+  width: 30px
+  height: 30px
+  border-radius: 50%
+  margin-right: 10px
+  overflow: hidden
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+.chat_content--box
+  display: flex
+  margin-bottom: 10px
+  padding: 5px
+
+.chat_content--text
+    background-color: helpers.$bg-color
+    padding: 5px 10px
+    border-radius: 5px
+
+.chat_content--me
+  flex-direction: row-reverse
+  justify-content: flex-start
+
+.chat_content--text--me
+  background-color: helpers.$main-color
+
+.chat_content--form
+  display: flex
+  input
+    flex-grow: 1
+
+   

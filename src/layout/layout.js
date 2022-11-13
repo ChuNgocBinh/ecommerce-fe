@@ -11,10 +11,12 @@ import { fetchUserInfo } from 'redux/appSLice';
 import 'react-notifications/lib/notifications.css';
 import Footer from 'components/footer/footer';
 import Chats from 'views/chats/chats';
+import { useAuth } from 'hook/useAuth';
 
 function Layout({ children }) {
   const locale = useSelector((state) => state.app.locale);
   const loading = useSelector((state) => state.app.loading);
+  const user = useAuth();
 
   // const dispatch = useDispatch();
 
@@ -33,7 +35,13 @@ function Layout({ children }) {
         <div>
           <Footer />
         </div>
-        <Chats />
+        {
+          user && (
+            <div className="layout_chat">
+              <Chats />
+            </div>
+          )
+        }
         <NotificationContainer />
       </IntlProvider>
     </div>
