@@ -14,6 +14,12 @@ import _emitter from 'utils/emitter';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const socket = io(process.env.REACT_APP_SOCKET_URL);
+socket.on('new-message', (data) => {
+  console.log(data);
+});
+socket.on('message', (data) => {
+  console.log(data);
+});
 
 function App() {
   const dispatch = useDispatch();
